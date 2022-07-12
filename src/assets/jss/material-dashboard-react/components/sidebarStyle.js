@@ -14,6 +14,7 @@ import {
     blackColor,
     hexToRgb,
 } from "assets/jss/material-dashboard-react.js";
+import { font24 } from "assets/mktfy-styles";
 
 const sidebarStyle = (theme) => ({
     drawerPaper: {
@@ -50,61 +51,51 @@ const sidebarStyle = (theme) => ({
             ...transition,
         },
     },
-    drawerPaperRTL: {
-        [theme.breakpoints.up("md")]: {
-            left: "auto !important",
-            right: "0 !important",
-        },
-        [theme.breakpoints.down("sm")]: {
-            left: "0  !important",
-            right: "auto !important",
-        },
-    },
+
     logo: {
         position: "relative",
-        padding: "15px 15px",
+        padding: "61px 15px 30px 15px",
+        marginBottom: "41px",
         zIndex: "4",
         "&:after": {
             content: '""',
             position: "absolute",
-            bottom: "0",
-
+            bottom: "-30px",
             height: "1px",
             right: "15px",
-            width: "calc(100% - 30px)",
+            width: "100%",
+            maxWidth: "220px",
             backgroundColor: "rgba(" + hexToRgb(grayColor[6]) + ", 0.3)",
         },
     },
-    logoLink: {
-        ...defaultFont,
-        textTransform: "uppercase",
-        padding: "5px 0",
-        display: "block",
-        fontSize: "18px",
-        textAlign: "left",
-        fontWeight: "400",
-        lineHeight: "30px",
-        textDecoration: "none",
-        backgroundColor: "transparent",
-        "&,&:hover": {
-            color: whiteColor,
-        },
-    },
-    logoLinkRTL: {
-        textAlign: "right",
-    },
+    // logoLink: {
+    //     ...defaultFont,
+    //     textTransform: "uppercase",
+    //     padding: "5px 0",
+    //     display: "block",
+    //     fontSize: "18px",
+    //     textAlign: "left",
+    //     fontWeight: "400",
+    //     lineHeight: "30px",
+    //     textDecoration: "none",
+    //     backgroundColor: "transparent",
+    //     "&,&:hover": {
+    //         color: whiteColor,
+    //     },
+    // },
+
     logoImage: {
-        width: "30px",
+        width: "",
         display: "inline-block",
         maxHeight: "30px",
         marginLeft: "10px",
         marginRight: "15px",
     },
     img: {
-        width: "35px",
-        top: "22px",
+        width: "138px",
         position: "absolute",
         verticalAlign: "middle",
+        right: "61px",
         border: "0",
     },
     background: {
@@ -148,11 +139,11 @@ const sidebarStyle = (theme) => ({
     itemLink: {
         width: "auto",
         transition: "all 300ms linear",
-        margin: "10px 15px 0",
-        borderRadius: "3px",
+        margin: "0px 15px 41px 0px",
+        borderRadius: "14px",
         position: "relative",
         display: "block",
-        padding: "10px 15px",
+        padding: "12px 20px",
         backgroundColor: "transparent",
         ...defaultFont,
     },
@@ -167,21 +158,16 @@ const sidebarStyle = (theme) => ({
         verticalAlign: "middle",
         color: "rgba(" + hexToRgb(whiteColor) + ", 0.8)",
     },
-    itemIconRTL: {
-        marginRight: "3px",
-        marginLeft: "15px",
-        float: "right",
-    },
+
     itemText: {
         ...defaultFont,
         margin: "0",
         lineHeight: "30px",
-        fontSize: "14px",
+        fontSize: font24,
+        fontWeight: "400",
         color: whiteColor,
     },
-    itemTextRTL: {
-        textAlign: "right",
-    },
+
     whiteFont: {
         color: whiteColor,
     },
@@ -283,9 +269,10 @@ const sidebarStyle = (theme) => ({
     },
     sidebarWrapper: {
         position: "relative",
-        height: "calc(100vh - 75px)",
+        marginLeft: "auto",
+        height: "calc(100vh - 120px)",
         overflow: "auto",
-        width: "400px",
+        width: "255px",
         zIndex: "4",
         overflowScrolling: "touch",
     },

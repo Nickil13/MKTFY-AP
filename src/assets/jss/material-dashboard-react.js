@@ -14,6 +14,8 @@
 
  */
 
+import { mktfyFont } from "assets/mktfy-styles";
+
 // ##############################
 // // // Function that converts from hex color to rgb color
 // // // Example: input = #9c27b0 => output = 156, 39, 176
@@ -66,7 +68,7 @@ const container = {
 };
 
 const defaultFont = {
-    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily: mktfyFont,
     fontWeight: "300",
     lineHeight: "1.5em",
 };

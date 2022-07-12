@@ -14,7 +14,8 @@ import routes from "routes.js";
 import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-2.jpg";
-import logo from "assets/img/reactlogo.png";
+import logo from "assets/img/mktfy/MKTFY_wordmark.svg";
+// import logo from "assets/img/reactlogo.png";
 
 let ps;
 
@@ -47,9 +48,6 @@ export default function Admin({ ...rest }) {
     // const [image, setImage] = React.useState(bgImage);
     // const [color, setColor] = React.useState("blue");
     const [mobileOpen, setMobileOpen] = React.useState(false);
-    // const handleImageClick = (image) => {
-    //     setImage(image);
-    // };
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
