@@ -36,7 +36,7 @@ import DashboardPage from "views/Dashboard/Dashboard.js";
 // core components/views for RTL layout
 // import RTLPage from "views/RTLPage/RTLPage.js";
 
-import FAQ from "views/FAQ";
+import FAQPage from "views/FAQPage";
 import Listings from "views/Listings";
 import User from "views/User";
 
@@ -52,21 +52,21 @@ const dashboardRoutes = [
         path: "/listings",
         name: "Listings",
         icon: Dashboard,
-        component: DashboardPage,
+        component: Listings,
         layout: "/admin",
     },
     {
         path: "/user",
         name: "User",
         icon: Dashboard,
-        component: DashboardPage,
+        component: User,
         layout: "/admin",
     },
     {
         path: "/FAQ",
         name: "FAQ",
         icon: Dashboard,
-        component: DashboardPage,
+        component: FAQPage,
         layout: "/admin",
     },
     // {
