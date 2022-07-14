@@ -126,7 +126,7 @@ export default function Dashboard() {
                             />
                         </CardHeader>
                         <CardBody>
-                            <h4 className={classes.cardTitle}>
+                            <h4 className="tw-text-blue-400 tw-rounded-sm">
                                 Sales per day over a month
                             </h4>
                             <p className={classes.cardCategory}>
