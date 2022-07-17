@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="589" height="287" viewBox="0 0 589 287">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#631baf"/>
+      <stop offset="1" stop-color="#9349de"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_2136" data-name="Rectangle 2136" width="589" height="287" rx="10" transform="translate(-0.339)" stroke="rgba(147,73,222,0.6)" stroke-width="1" fill="url(#linear-gradient)"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-2" y2="1.475" xlink:href="#linear-gradient"/>
+  </defs>
+  <g id="Group_1577" data-name="Group 1577" transform="translate(-459 -628)">
+    <g id="Mask_Group_9" data-name="Mask Group 9" transform="translate(459.339 628)" clip-path="url(#clip-path)">
+      <g id="Rectangle_2132" data-name="Rectangle 2132" transform="translate(-0.339)" stroke="rgba(147,73,222,0.6)" stroke-width="1" fill="url(#linear-gradient-2)">
+        <rect width="589" height="287" rx="10" stroke="none"/>
+        <rect x="0.5" y="0.5" width="588" height="286" rx="9.5" fill="none"/>
+      </g>
+      <path id="Path_7431" data-name="Path 7431" d="M-15380,15424.96s57.371-55.813,128.156-46.335,72.5,90.606,154.986,84.251,108.721-82.255,174.941-109.673,57,8.277,89.936,0,19.293-33.108,41.8-33.108v219.931H-15380Z" transform="translate(15379.999 -15255)" fill="rgba(147,73,222,0.33)"/>
+      <path id="Path_7433" data-name="Path 7433" d="M-15381.41,15431.946s39.756-53.394,122.738-51.806,66.672,91.321,165.779,83.843,160.361-150.157,217.467-119.277,91.963-35.657,91.963-35.657" transform="translate(15379.631 -15255)" fill="none" stroke="rgba(255,255,255,0.8)" stroke-linecap="round" stroke-width="5"/>
+      <text id="_2_780" data-name="$2,780" transform="translate(37.66 77)" fill="#f4f4f5" font-size="20" font-family="Arial" font-weight="700"><tspan x="0" y="0">$2,780</tspan></text>
+      <text id="Total_Earn" data-name="Total Earn" transform="translate(37.66 46)" fill="#f4f4f5" font-size="21" font-family="Arial"><tspan x="0" y="0">Sales</tspan></text>
+      <text id="_1_W" data-name="1 W" transform="translate(46.66 265)" fill="#f4f4f5" font-size="10" font-family="Arial" font-weight="700"><tspan x="-8" y="0">1 W</tspan></text>
+      <text id="_2W" data-name="2W" transform="translate(209.66 265)" fill="#f4f4f5" font-size="10" font-family="Arial" font-weight="700"><tspan x="-7" y="0">2W</tspan></text>
+      <text id="_3W" data-name="3W" transform="translate(372.66 265)" fill="#f4f4f5" font-size="10" font-family="Arial" font-weight="700"><tspan x="-7" y="0">3W</tspan></text>
+      <text id="_3W-2" data-name="3W" transform="translate(535.66 265)" fill="#f4f4f5" font-size="10" font-family="Arial" font-weight="700"><tspan x="-7" y="0">4W</tspan></text>
+    </g>
+    <g id="Ellipse_907" data-name="Ellipse 907" transform="translate(938 704)" fill="#ffba00" stroke="#fff" stroke-width="3">
+      <ellipse cx="8.5" cy="9" rx="8.5" ry="9" stroke="none"/>
+      <ellipse cx="8.5" cy="9" rx="7" ry="7.5" fill="none"/>
+    </g>
+    <g id="info" transform="translate(917.301 652)">
+      <path id="Path_211" data-name="Path 211" d="M12.8-.8,12,12l-12.8.8Z" transform="translate(28.654 28.73) rotate(45)" fill="#f4f4f5"/>
+      <rect id="Rectangle_779" data-name="Rectangle 779" width="57" height="37" transform="translate(-0.301)" fill="rgba(147,73,222,0.08)" stroke="#f4f4f5" stroke-width="2"/>
+      <text id="_780" data-name="$780" transform="translate(26.699 23)" fill="#f4f4f5" font-size="12" font-family="Arial" font-weight="700"><tspan x="-13" y="0">$780</tspan></text>
+    </g>
+  </g>
+</svg>

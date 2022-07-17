@@ -1,6 +1,6 @@
 import React from "react";
 // react plugin for creating charts
-import ChartistGraph from "react-chartist";
+//import ChartistGraph from "react-chartist";
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 import Icon from "@material-ui/core/Icon";
@@ -26,11 +26,11 @@ import CardFooter from "components/Card/CardFooter.js";
 import usersIcon from "assets/img/mktfy/users.svg";
 // import { bugs, website, server } from "variables/general.js";
 
-import {
-    dailySalesChart,
-    // emailsSubscriptionChart,
-    // completedTasksChart,
-} from "variables/charts.js";
+// import {
+//     dailySalesChart,
+//     // emailsSubscriptionChart,
+//     // completedTasksChart,
+// } from "variables/charts.js";
 
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 
@@ -68,7 +68,7 @@ export default function Dashboard() {
                                 <Store />
                             </CardIcon>
                             <p className={classes.cardCategory}>Revenue</p>
-                            <h3 className={classes.cardTitle}>$34,245</h3>
+                            <h3 className={`${classes.cardTitle} `}>$34,245</h3>
                         </CardHeader>
                         <CardFooter stats>
                             <div className={classes.stats}>
@@ -117,16 +117,16 @@ export default function Dashboard() {
                 <GridItem xs={12} sm={12} md={4}>
                     <Card chart>
                         <CardHeader color="success">
-                            <ChartistGraph
+                            {/* <ChartistGraph
                                 className="ct-chart"
                                 data={dailySalesChart.data}
                                 type="Line"
                                 options={dailySalesChart.options}
                                 listener={dailySalesChart.animation}
-                            />
+                            /> */}
                         </CardHeader>
                         <CardBody>
-                            <h4 className="tw-text-blue-400 tw-rounded-sm">
+                            <h4 className={classes.cardTitle}>
                                 Sales per day over a month
                             </h4>
                             <p className={classes.cardCategory}>

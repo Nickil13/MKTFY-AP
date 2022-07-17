@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="73" height="56.354" viewBox="0 0 73 56.354">
+  <g id="Group_1511" data-name="Group 1511" transform="translate(-1612 -304.646)">
+    <text id="Approve" transform="translate(1612 356)" fill="#6cc04b" font-size="18" font-family="OpenSans-Semibold, Open Sans" font-weight="600"><tspan x="0" y="0">Approve</tspan></text>
+    <g id="check-square" transform="translate(1632.254 302.646)">
+      <path id="Path_7419" data-name="Path 7419" d="M9,13.023l3.867,3.867L25.758,4" transform="translate(1.734 0.289)" fill="none" stroke="#6cc04b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_7420" data-name="Path 7420" d="M26.2,14.6v9.023A2.578,2.578,0,0,1,23.625,26.2H5.578A2.578,2.578,0,0,1,3,23.625V5.578A2.578,2.578,0,0,1,5.578,3h14.18" fill="none" stroke="#6cc04b" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>
