@@ -35,7 +35,10 @@ export default function Header(props) {
                     <Button
                         color="transparent"
                         href="#"
-                        className={classes.title}
+                        className={
+                            classes.title +
+                            " tw-text-[30px] tw-text-gray-600 tw-font-normal"
+                        }
                     >
                         {routeName}
                     </Button>

@@ -21,7 +21,7 @@ import Dashboard from "@material-ui/icons/Dashboard";
 
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
-import FAQPage from "views/FAQPage";
+import { FAQsRoutes } from "views/FAQ";
 import Listings from "views/Listings";
 import User from "views/User";
 
@@ -51,7 +51,7 @@ const dashboardRoutes = [
         path: "/FAQ",
         name: "FAQ",
         icon: Dashboard,
-        component: FAQPage,
+        component: FAQsRoutes,
         layout: "/admin",
     },
 ];

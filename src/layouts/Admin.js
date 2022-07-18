@@ -96,7 +96,9 @@ export default function Admin({ ...rest }) {
                 />
 
                 <div className={classes.content}>
-                    <div className={classes.container}>{switchRoutes}</div>
+                    <div className={classes.container + "   tw-min-h-ap"}>
+                        {switchRoutes}
+                    </div>
                 </div>
             </div>
         </div>
