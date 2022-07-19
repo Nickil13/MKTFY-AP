@@ -15,6 +15,9 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/mktfy/MKTFY_wordmark.svg";
+import { AddFAQModal, EditFAQModal } from "components/Modal";
+import { useModalContext } from "assets/context/ModalContext";
+import { modalTitles } from "variables/modalTitles";
 // import logo from "assets/img/reactlogo.png";
 
 let ps;
@@ -46,8 +49,8 @@ export default function Admin({ ...rest }) {
     const mainPanel = React.createRef();
     // states and functions
     // const [image, setImage] = React.useState(bgImage);
-    // const [color, setColor] = React.useState("blue");
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const { modalShowing, modalTitle } = useModalContext();
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -101,6 +104,14 @@ export default function Admin({ ...rest }) {
                     </div>
                 </div>
             </div>
+            {modalShowing && (
+                <div className="tw-absolute tw-flex tw-items-center tw-justify-center tw-inset-0 tw-pl-drawer tw-bg-[#000000]/20 tw-z-[9999]">
+                    {/* Add Question Modal */}
+                    {modalTitle === modalTitles.ADD_FAQ && <AddFAQModal />}
+                    {/* Edit Question Modal */}
+                    {modalTitle === modalTitles.EDIT_FAQ && <EditFAQModal />}
+                </div>
+            )}
         </div>
     );
 }

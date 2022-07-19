@@ -1,0 +1,7 @@
+export const modalTitles = {
+    ADD_FAQ: "ADD_FAQ",
+    EDIT_FAQ: "EDIT_FAQ",
+    APPROVE_LISTING: "APPROVE_LISTING",
+    CANCEL_LISTING: "CANCEL_LISTING",
+    EDIT_PROFILE: "EDIT_PROFILE",
+};

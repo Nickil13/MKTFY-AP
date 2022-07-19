@@ -4,10 +4,13 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { dummyFAQs } from "data/dummyFAQs";
 import FAQItem from "./FAQItem";
+import { useModalContext } from "assets/context/ModalContext";
+import { modalTitles } from "variables/modalTitles";
 
 export default function FAQsPage() {
+    const { showModal } = useModalContext();
     const handleAddFAQ = () => {
-        console.log("Adding FAQ");
+        showModal(modalTitles.ADD_FAQ);
     };
     return (
         <Card className="tw-min-h-ap">
@@ -19,7 +22,7 @@ export default function FAQsPage() {
                     Frequently Asked Questions
                 </h3>
                 <button
-                    className="tw-bg-[#FFBA00] tw-w-[185px] tw-rounded-full tw-text-base tw-text-white tw-border-none"
+                    className="tw-btn tw-bg-gold-200 tw-w-[185px]"
                     onClick={handleAddFAQ}
                 >
                     Add

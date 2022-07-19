@@ -35,7 +35,7 @@ export default function FAQ() {
                     Edit
                 </button>
             </CardHeader>
-            <CardBody className="tw-text-[21px] tw-leading-7 tw-pl-16 tw-pr-14 ">
+            <CardBody className="tw-text-[21px] tw-leading-7 tw-pl-16 tw-pr-14 tw-text-black">
                 {currentFAQ.description}
             </CardBody>
         </Card>

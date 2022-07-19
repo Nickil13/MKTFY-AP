@@ -27,7 +27,7 @@ module.exports = {
                 600: "#560F9F",
             },
             gold: { 100: "#ffc832", 200: "#FFBA00" },
-            black: "#262627",
+            black: "#000000",
             beige: { 100: "#FFFFFF99", 200: "#F7F7F7" },
             transparent: "transparent",
         },
@@ -43,11 +43,17 @@ module.exports = {
             inherit: "inherit",
         },
         extend: {
+            fontFamily: {
+                mktfy: ["Open Sans", "sans-serif"],
+            },
             boxShadow: {
                 "card-header": "0px 6px 20px #00000024",
             },
-            navHeight: {
-                ap: "153px",
+            height: {
+                "ap-nav": "153px",
+            },
+            padding: {
+                drawer: "400px",
             },
             minHeight: {
                 ap: "calc(100vh - 153px)",

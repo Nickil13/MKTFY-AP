@@ -29,8 +29,8 @@
         "lint:fix": "eslint . --ext=js,jsx --fix;  exit 0",
         "build-package-css": "cp src/assets/css/material-dashboard-react.css dist/material-dashboard-react.css",
         "build-package": "npm run build-package-css && babel src --out-dir dist",
-        "tw-dev": "npx tailwindcss --output src/assets/css/tailwind.css --watch",
-        "tw-build": "npx tailwindcss --output src/assets/css/tailwind.css --minify"
+        "tw-dev": "npx tailwindcss --input src/assets/css/index.css --output src/assets/css/tailwind.css --watch",
+        "tw-build": "npx tailwindcss --input src/assets/css/index.css  --output src/assets/css/tailwind.css --minify"
     },
     "repository": {
         "type": "git",
