@@ -231,6 +231,10 @@
   position: absolute !important
 }
 
+.tw-relative {
+  position: relative !important
+}
+
 .tw-inset-0 {
   top: 0px !important;
   right: 0px !important;
@@ -238,16 +242,41 @@
   left: 0px !important
 }
 
+.tw-left-20 {
+  left: 5rem !important
+}
+
+.tw-bottom-10 {
+  bottom: 2.5rem !important
+}
+
 .-tw-top-14 {
   top: -3.5rem !important
+}
+
+.tw-left-20 {
+  left: 5rem !important
+}
+
+.tw-bottom-10 {
+  bottom: 2.5rem !important
 }
 
 .tw-z-\[9999\] {
   z-index: 9999 !important
 }
 
+.tw-z-40 {
+  z-index: 40 !important
+}
+
 .tw-m-0 {
   margin: 0px !important
+}
+
+.tw-mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important
 }
 
 .tw-mx-8 {
@@ -258,6 +287,18 @@
 .tw-mx-auto {
   margin-left: auto !important;
   margin-right: auto !important
+}
+
+.tw-mt-14 {
+  margin-top: 3.5rem !important
+}
+
+.tw-mb-4 {
+  margin-bottom: 1rem !important
+}
+
+.tw-ml-1 {
+  margin-left: 0.25rem !important
 }
 
 .tw-mb-9 {
@@ -276,8 +317,28 @@
   margin-right: 2.5rem !important
 }
 
+.tw-mt-14 {
+  margin-top: 3.5rem !important
+}
+
+.tw-mb-4 {
+  margin-bottom: 1rem !important
+}
+
+.tw-ml-1 {
+  margin-left: 0.25rem !important
+}
+
+.tw-mt-14 {
+  margin-top: 3.5rem !important
+}
+
 .tw-flex {
   display: flex !important
+}
+
+.tw-h-screen {
+  height: 100vh !important
 }
 
 .tw-h-3\/4 {
@@ -292,20 +353,92 @@
   height: 1.75rem !important
 }
 
+.tw-h-screen {
+  height: 100vh !important
+}
+
+.tw-h-\[250px\] {
+  height: 250px !important
+}
+
+.tw-h-screen {
+  height: 100vh !important
+}
+
+.tw-h-\[250px\] {
+  height: 250px !important
+}
+
+.tw-h-screen {
+  height: 100vh !important
+}
+
 .tw-min-h-ap {
   min-height: calc(100vh - 153px) !important
 }
 
-.tw-w-1\/2 {
-  width: 50% !important
+.tw-min-h-screen {
+  min-height: 100vh !important
+}
+
+.tw-w-4\/5 {
+  width: 80% !important
 }
 
 .tw-w-full {
   width: 100% !important
 }
 
+.tw-w-1\/2 {
+  width: 50% !important
+}
+
 .tw-w-\[185px\] {
   width: 185px !important
+}
+
+.tw-w-4\/5 {
+  width: 80% !important
+}
+
+.tw-w-full {
+  width: 100% !important
+}
+
+.tw-w-4\/5 {
+  width: 80% !important
+}
+
+.tw-w-full {
+  width: 100% !important
+}
+
+.tw-w-4\/5 {
+  width: 80% !important
+}
+
+.tw-w-full {
+  width: 100% !important
+}
+
+.tw-w-4\/5 {
+  width: 80% !important
+}
+
+.tw-w-full {
+  width: 100% !important
+}
+
+.tw-w-\[250px\] {
+  width: 250px !important
+}
+
+.tw-w-4\/5 {
+  width: 80% !important
+}
+
+.tw-w-full {
+  width: 100% !important
 }
 
 .tw-max-w-\[1249px\] {
@@ -384,6 +517,23 @@
   background-color: rgb(255 186 0 / var(--tw-bg-opacity)) !important
 }
 
+.tw-bg-green {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(108 192 75 / var(--tw-bg-opacity)) !important
+}
+
+.tw-bg-login-clouds {
+  background-image: url(../img/mktfy/background_begin.svg) !important
+}
+
+.tw-bg-cover {
+  background-size: cover !important
+}
+
+.tw-bg-no-repeat {
+  background-repeat: no-repeat !important
+}
+
 .tw-fill-white {
   fill: #FFFFFF !important
 }
@@ -410,6 +560,10 @@
 
 .tw-pl-drawer {
   padding-left: 400px !important
+}
+
+.tw-pt-24 {
+  padding-top: 6rem !important
 }
 
 .tw-pb-14 {
@@ -440,8 +594,72 @@
   padding-left: 2.25rem !important
 }
 
+.tw-pt-24 {
+  padding-top: 6rem !important
+}
+
+.tw-pt-20 {
+  padding-top: 5rem !important
+}
+
+.tw-pl-36 {
+  padding-left: 9rem !important
+}
+
+.tw-pt-20 {
+  padding-top: 5rem !important
+}
+
+.tw-pl-36 {
+  padding-left: 9rem !important
+}
+
+.tw-pt-24 {
+  padding-top: 6rem !important
+}
+
+.tw-pt-20 {
+  padding-top: 5rem !important
+}
+
+.tw-pl-36 {
+  padding-left: 9rem !important
+}
+
+.tw-pt-24 {
+  padding-top: 6rem !important
+}
+
+.tw-pt-20 {
+  padding-top: 5rem !important
+}
+
+.tw-pl-36 {
+  padding-left: 9rem !important
+}
+
+.tw-pt-24 {
+  padding-top: 6rem !important
+}
+
+.tw-pt-20 {
+  padding-top: 5rem !important
+}
+
+.tw-pl-36 {
+  padding-left: 9rem !important
+}
+
+.tw-pt-24 {
+  padding-top: 6rem !important
+}
+
 .tw-text-start {
   text-align: start !important
+}
+
+.tw-text-sm-17 {
+  font-size: 1.0625rem !important
 }
 
 .tw-text-xl {
@@ -462,6 +680,14 @@
 
 .tw-text-\[21px\] {
   font-size: 21px !important
+}
+
+.tw-text-sm-17 {
+  font-size: 1.0625rem !important
+}
+
+.tw-font-bold {
+  font-weight: 700 !important
 }
 
 .tw-font-semibold {
@@ -485,6 +711,11 @@
   color: rgb(255 255 255 / var(--tw-text-opacity)) !important
 }
 
+.tw-text-gold-200 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 186 0 / var(--tw-text-opacity)) !important
+}
+
 .tw-text-gray-400 {
   --tw-text-opacity: 1 !important;
   color: rgb(107 107 108 / var(--tw-text-opacity)) !important
@@ -498,6 +729,16 @@
 .tw-text-black {
   --tw-text-opacity: 1 !important;
   color: rgb(0 0 0 / var(--tw-text-opacity)) !important
+}
+
+.tw-text-white {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 255 255 / var(--tw-text-opacity)) !important
+}
+
+.tw-text-gold-200 {
+  --tw-text-opacity: 1 !important;
+  color: rgb(255 186 0 / var(--tw-text-opacity)) !important
 }
 
 .tw-shadow-card-header {

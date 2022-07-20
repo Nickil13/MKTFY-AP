@@ -5,8 +5,9 @@ import CardBody from "components/Card/CardBody.js";
 import { dummyFAQs } from "data/dummyFAQs";
 import { useParams, useHistory } from "react-router-dom";
 import { ReactComponent as ChevronLeft } from "assets/img/mktfy/chevron-down.svg";
-import { useModalContext } from "assets/context/ModalContext";
+
 import { modalTitles } from "variables/modalTitles";
+import { useModalContext } from "context/ModalContext";
 
 export default function FAQ() {
     const { id } = useParams();

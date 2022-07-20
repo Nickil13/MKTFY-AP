@@ -16,8 +16,9 @@ import styles from "assets/jss/material-dashboard-react/layouts/adminStyle.js";
 import bgImage from "assets/img/sidebar-2.jpg";
 import logo from "assets/img/mktfy/MKTFY_wordmark.svg";
 import { AddFAQModal, EditFAQModal } from "components/Modal";
-import { useModalContext } from "assets/context/ModalContext";
+
 import { modalTitles } from "variables/modalTitles";
+import { useModalContext } from "context/ModalContext";
 // import logo from "assets/img/reactlogo.png";
 
 let ps;

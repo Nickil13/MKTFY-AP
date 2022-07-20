@@ -21,19 +21,22 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // core components
 import Admin from "layouts/Admin.js";
+import Login from "layouts/Login";
 
 import "assets/css/material-dashboard-react.css?v=1.10.0";
 import "assets/css/tailwind.css";
 import "assets/css/index.css";
-import { ModalContextProvider } from "assets/context/ModalContext";
+import { ModalContextProvider } from "context/ModalContext";
+
 // import { FAQ } from "views/FAQ";
 
 ReactDOM.render(
     <ModalContextProvider>
         <BrowserRouter>
             <Switch>
+                <Route path="/auth" component={Login} />
                 <Route path="/admin" component={Admin} />
-                <Redirect from="/" to="/admin/dashboard" />
+                <Redirect from="/" to="/auth/login" />
                 {/* <Route path="/admin/FAQ/:id" component={FAQ} /> */}
             </Switch>
         </BrowserRouter>

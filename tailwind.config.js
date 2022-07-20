@@ -58,6 +58,9 @@ module.exports = {
             minHeight: {
                 ap: "calc(100vh - 153px)",
             },
+            backgroundImage: {
+                "login-clouds": "url(../img/mktfy/background_begin.svg)",
+            },
         },
     },
     corePlugins: {

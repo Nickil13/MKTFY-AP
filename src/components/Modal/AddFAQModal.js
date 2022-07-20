@@ -3,7 +3,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { ReactComponent as CloseIcon } from "assets/img/mktfy/icon_close.svg";
-import { useModalContext } from "assets/context/ModalContext";
+import { useModalContext } from "context/ModalContext";
 
 export default function AddFAQModal() {
     const [question, setQuestion] = useState("");
