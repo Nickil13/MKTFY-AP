@@ -47,7 +47,7 @@ export default function AddFAQModal() {
                             name="question"
                             id="question"
                             placeholder="Type question"
-                            className="tw-input tw-w-1/2 tw-border-solid tw-font-semibold"
+                            className="tw-input tw-w-1/2 tw-font-semibold"
                             value={question}
                             onChange={(e) => setQuestion(e.target.value)}
                         />
