@@ -48,15 +48,28 @@ module.exports = {
             },
             boxShadow: {
                 "card-header": "0px 6px 20px #00000024",
+                modal: "0px 7px 12px #00000024",
+                btn: "0px 5px 20px #00000024",
             },
             height: {
                 "ap-nav": "153px",
             },
             padding: {
                 drawer: "400px",
+                15: "60px",
+            },
+            margin: {
+                15: "60px",
             },
             minHeight: {
                 ap: "calc(100vh - 153px)",
+            },
+            width: {
+                input: "532px",
+            },
+            maxWidth: {
+                modal: "808px",
+                input: "532px",
             },
             backgroundImage: {
                 "login-clouds": "url(../img/mktfy/background_begin.svg)",

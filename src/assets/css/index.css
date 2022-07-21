@@ -7,9 +7,12 @@
         @apply tw-px-6 tw-py-5 placeholder:tw-text-gray-200 placeholder:tw-font-semibold tw-text-base tw-rounded tw-border-solid tw-border tw-border-gray-100 focus:tw-outline focus:tw-outline-purple-400 focus:tw-outline-1;
     }
     .tw-btn {
-        @apply tw-rounded-full tw-border-none tw-font-bold tw-text-base tw-py-5 tw-max-h-[64px] tw-text-white disabled:tw-bg-gray-100 disabled:tw-shadow-none disabled:tw-pointer-events-none tw-cursor-pointer;
+        @apply tw-rounded-full tw-border-none tw-font-bold tw-text-base tw-py-5 tw-max-h-[64px] tw-text-white tw-shadow-btn disabled:tw-bg-gray-100 disabled:tw-shadow-none disabled:tw-pointer-events-none tw-cursor-pointer;
     }
     .tw-btn-purple {
         @apply tw-btn tw-bg-purple-500 hover:tw-bg-purple-400;
+    }
+    .tw-btn-gold {
+        @apply tw-btn tw-bg-gold-200 hover:tw-bg-gold-100;
     }
 }
