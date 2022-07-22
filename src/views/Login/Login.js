@@ -59,7 +59,7 @@ export default function Login() {
                     </Link>
                 </div>
                 <button
-                    className="tw-btn-gold tw-mt-15  tw-max-w-[345px] tw-mx-auto tw-w-full"
+                    className="tw-btn-gold tw-mt-15 tw-max-w-[345px] tw-mx-auto tw-w-full"
                     type="submit"
                     disabled={!email || emailError || !password}
                 >

@@ -3,7 +3,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { ReactComponent as CloseIcon } from "assets/img/mktfy/icon_close.svg";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { dummyFAQs } from "data/dummyFAQs";
 import { useModalContext } from "context/ModalContext";
 
@@ -12,8 +12,10 @@ export default function EditFAQModal() {
     const [answer, setAnswer] = useState("");
     const { closeModal } = useModalContext();
     let location = useLocation();
-
+    let { id } = useParams();
+    console.log(id);
     useEffect(() => {
+        console.log(location, id);
         /* Get the id from the location. Can't get it from useParams. */
         const id = location.pathname.split("/")[3];
         const currentFAQ = dummyFAQs.find((faq) => faq.id === id);
