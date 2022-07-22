@@ -3,22 +3,15 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { ReactComponent as CloseIcon } from "assets/img/mktfy/icon_close.svg";
-import { useLocation, useParams } from "react-router-dom";
 import { dummyFAQs } from "data/dummyFAQs";
-import { useModalContext } from "context/ModalContext";
+import PropTypes from "prop-types";
 
-export default function EditFAQModal() {
+export default function EditFAQModal({ closeModal, FAQId }) {
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
-    const { closeModal } = useModalContext();
-    let location = useLocation();
-    let { id } = useParams();
-    console.log(id);
+    const currentFAQ = dummyFAQs.find((faq) => faq.id === FAQId) || null;
+
     useEffect(() => {
-        console.log(location, id);
-        /* Get the id from the location. Can't get it from useParams. */
-        const id = location.pathname.split("/")[3];
-        const currentFAQ = dummyFAQs.find((faq) => faq.id === id);
         if (currentFAQ) {
             setQuestion(currentFAQ.title);
             setAnswer(currentFAQ.description);
@@ -32,7 +25,7 @@ export default function EditFAQModal() {
     };
 
     return (
-        <Card className="tw-max-w-[1249px] tw-h-3/4 tw-pb-14">
+        <Card className="tw-max-w-[1249px] tw-h-3/4 tw-pb-14 tw-w-4/5 xl:tw-w-full">
             <CardHeader
                 icon
                 className={`tw-flex tw-justify-between tw-items-center  tw-bg-purple-500 tw-text-white tw-rounded-[10px] tw-px-10 tw-py-10 -tw-top-14  tw-shadow-card-header tw-mx-8`}
@@ -96,3 +89,8 @@ export default function EditFAQModal() {
         </Card>
     );
 }
+
+EditFAQModal.propTypes = {
+    closeModal: PropTypes.func,
+    FAQId: PropTypes.string,
+};

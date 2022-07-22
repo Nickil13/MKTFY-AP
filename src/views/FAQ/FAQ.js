@@ -3,17 +3,12 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { dummyFAQs } from "data/dummyFAQs";
-import { useParams, useHistory } from "react-router-dom";
 import { ReactComponent as ChevronLeft } from "assets/img/mktfy/chevron-down.svg";
-
 import { modalTitles } from "variables/modalTitles";
-import { useModalContext } from "context/ModalContext";
+import PropTypes from "prop-types";
 
-export default function FAQ() {
-    const { id } = useParams();
-    let history = useHistory();
-    const currentFAQ = id ? dummyFAQs.find((faq) => faq.id === id) : {};
-    const { showModal } = useModalContext();
+export default function FAQ({ showModal, FAQId, setFAQId }) {
+    const currentFAQ = FAQId ? dummyFAQs.find((faq) => faq.id === FAQId) : {};
 
     const handleEditFAQ = () => {
         showModal(modalTitles.EDIT_FAQ);
@@ -28,9 +23,9 @@ export default function FAQ() {
                 <h3 className="tw-font-semibold tw-text-xl tw-text-start tw-m-0">
                     <ChevronLeft
                         className="tw-mr-10 tw-h-7 tw-fill-white tw-rotate-90 tw-cursor-pointer"
-                        onClick={history.goBack}
+                        onClick={() => setFAQId("")}
                     />
-                    {currentFAQ && currentFAQ.title}
+                    {currentFAQ?.title}
                 </h3>
                 <button
                     className="tw-bg-transparent tw-border-none tw-mr-10 tw-text-base tw-font-bold tw-text-white "
@@ -40,8 +35,14 @@ export default function FAQ() {
                 </button>
             </CardHeader>
             <CardBody className="tw-text-[21px] tw-leading-7 tw-pl-16 tw-pr-14 tw-text-black">
-                {currentFAQ.description}
+                {currentFAQ?.description}
             </CardBody>
         </Card>
     );
 }
+
+FAQ.propTypes = {
+    FAQId: PropTypes.string,
+    setFAQId: PropTypes.func,
+    showModal: PropTypes.func,
+};
