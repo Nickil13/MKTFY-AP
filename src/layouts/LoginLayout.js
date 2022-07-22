@@ -1,33 +1,18 @@
 import Logo from "components/Icons/Logo";
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { useHistory, Route, Switch } from "react-router-dom";
 import { ForgotPassword, Login, ResetPassword, VerifyReset } from "views/Login";
-// import { useModalContext } from "../context/ModalContext";
-// import { useUserContext } from "../context/UserContext";
+import { useUserContext } from "context/UserContext";
 
 export default function LoginLayout() {
-    // const { showModal, setShowModal } = useModalContext();
-    // const { isAuthenticated, error } = useUserContext();
-    // let history = useHistory();
-    // let location = useLocation();
+    const { isAuthenticated } = useUserContext();
+    let history = useHistory();
 
-    // React.useEffect(() => {
-    //     if (isAuthenticated) {
-    //         history.push("/admin/dashboard");
-    //         if (showModal) {
-    //             setShowModal(false);
-    //         }
-    //     }
-    // }, [isAuthenticated]);
-
-    // React.useEffect(() => {
-    //     /* When returning to this route or if there is an error,
-    //      check if the route includes a modal.
-    //     If so and the modal is not showing, show it.*/
-    //     if (location.pathname.length > 1 && !showModal) {
-    //         setShowModal(true);
-    //     }
-    // }, [location, error]);
+    React.useEffect(() => {
+        if (isAuthenticated) {
+            history.push("/admin/dashboard");
+        }
+    }, [isAuthenticated]);
 
     return (
         <div className="tw-relative tw-bg-login-clouds tw-bg-cover tw-bg-no-repeat tw-min-h-screen">

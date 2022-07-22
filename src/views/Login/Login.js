@@ -1,21 +1,19 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Wrapper from "./Wrapper";
 import { LoginInput, PasswordInput } from "components/Input";
-// import { useUserContext } from "../../context/UserContext";
+import { useUserContext } from "context/UserContext";
 
 export default function Login() {
     const [email, setEmail] = useState("nickitest62@gmail.com");
     const [emailError, setEmailError] = useState("");
     const [password, setPassword] = useState("Apples31");
-    let history = useHistory();
-    // const { login, error } = useUserContext();
+    const { login, error } = useUserContext();
 
     const handleLogin = (e) => {
         e.preventDefault();
         console.log("Logging in");
-        // login(email, password);
-        history.push("/admin/dashboard");
+        login(email, password);
     };
 
     const checkValidEmail = (value) => {
@@ -50,7 +48,7 @@ export default function Login() {
                     lastchild
                 />
                 <div className="tw-flex tw-ml-auto">
-                    {/* <div className="text-red">{error && error}</div> */}
+                    <div className="text-red">{error && error}</div>
                     <Link
                         className="tw-text-gold-200 tw-underline tw-text-xs tw-font-semibold tw-mt-7"
                         to="/auth/forgot-password"

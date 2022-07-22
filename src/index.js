@@ -17,7 +17,7 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 // layouts
 import Admin from "layouts/Admin.js";
@@ -28,17 +28,23 @@ import "assets/css/material-dashboard-react.css?v=1.10.0";
 import "assets/css/tailwind.css";
 import "assets/css/index.css";
 
-import { ModalContextProvider } from "context/ModalContext";
+import { UserContextProvider } from "context/UserContext";
+import RequireAuth from "utils/RequireAuth";
 
 ReactDOM.render(
-    <ModalContextProvider>
+    <UserContextProvider>
         <BrowserRouter>
             <Switch>
                 <Route path="/auth" component={LoginLayout} />
-                <Route path="/admin" component={Admin} />
-                <Redirect from="/" to="/auth/login" />
+                <Route path="/admin">
+                    <RequireAuth>
+                        <Admin />
+                    </RequireAuth>
+                </Route>
+
+                {/* <Redirect from="/" to="/auth/login" /> */}
             </Switch>
         </BrowserRouter>
-    </ModalContextProvider>,
+    </UserContextProvider>,
     document.getElementById("root")
 );
