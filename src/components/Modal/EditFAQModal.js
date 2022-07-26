@@ -8,8 +8,9 @@ import { EDIT_FAQ } from "reducers/action-types";
 import { getFAQById, editFAQ } from "actions/faq";
 
 export default function EditFAQModal({ closeModal, FAQId, state, dispatch }) {
-    const [question, setQuestion] = useState("");
-    const [answer, setAnswer] = useState("");
+    const currentFAQ = state.FAQs?.find((faq) => faq.id === FAQId) || null;
+    const [question, setQuestion] = useState(currentFAQ?.title || "");
+    const [answer, setAnswer] = useState(currentFAQ?.description || "");
 
     useEffect(() => {
         if (!question) {

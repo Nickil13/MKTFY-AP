@@ -117,7 +117,7 @@ export const UserContextProvider = ({ children }) => {
         setIsAuthenticated(false);
         sessionStorage.removeItem("access_token");
         clearLocalStorage();
-        webAuth.logout({ returnTo: "http://localhost:3000" });
+        webAuth.logout({ returnTo: "http://localhost:3000/auth/login" });
     };
 
     return (
