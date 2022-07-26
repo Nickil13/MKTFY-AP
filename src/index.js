@@ -17,7 +17,7 @@
 */
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // layouts
 import Admin from "layouts/Admin.js";
@@ -42,7 +42,7 @@ ReactDOM.render(
                     </RequireAuth>
                 </Route>
 
-                {/* <Redirect from="/" to="/auth/login" /> */}
+                <Redirect from="/" to="/auth/login" />
             </Switch>
         </BrowserRouter>
     </UserContextProvider>,

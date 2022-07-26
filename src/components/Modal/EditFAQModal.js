@@ -3,24 +3,40 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { ReactComponent as CloseIcon } from "assets/img/mktfy/icon_close.svg";
-import { dummyFAQs } from "data/dummyFAQs";
 import PropTypes from "prop-types";
+import { EDIT_FAQ } from "reducers/action-types";
+import { getFAQById, editFAQ } from "actions/faq";
 
-export default function EditFAQModal({ closeModal, FAQId }) {
+export default function EditFAQModal({ closeModal, FAQId, state, dispatch }) {
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
-    const currentFAQ = dummyFAQs.find((faq) => faq.id === FAQId) || null;
 
     useEffect(() => {
-        if (currentFAQ) {
-            setQuestion(currentFAQ.title);
-            setAnswer(currentFAQ.description);
+        if (!question) {
+            getFAQById(FAQId).then((res) => {
+                if (res) {
+                    setQuestion(res.title);
+                    setAnswer(res.description);
+                }
+            });
         }
     }, []);
 
     const handleEditFAQ = (e) => {
         e.preventDefault();
-        console.log("Editing FAQ:", { question, answer });
+
+        editFAQ(FAQId, question, answer).then((res) => {
+            if (res) {
+                const updatedFAQs = state.FAQs.map((faq) => {
+                    if (faq.id === res.id) {
+                        return res;
+                    } else {
+                        return faq;
+                    }
+                });
+                dispatch({ type: EDIT_FAQ, payload: updatedFAQs });
+            }
+        });
         closeModal();
     };
 
@@ -93,4 +109,6 @@ export default function EditFAQModal({ closeModal, FAQId }) {
 EditFAQModal.propTypes = {
     closeModal: PropTypes.func,
     FAQId: PropTypes.string,
+    dispatch: PropTypes.func,
+    state: PropTypes.object,
 };

@@ -4,14 +4,20 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { ReactComponent as CloseIcon } from "assets/img/mktfy/icon_close.svg";
 import PropTypes from "prop-types";
+import { createFAQ } from "actions/faq";
+import { ADD_FAQ } from "reducers/action-types";
 
-export default function AddFAQModal({ closeModal }) {
+export default function AddFAQModal({ closeModal, dispatch }) {
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
 
     const handleAddFAQ = (e) => {
         e.preventDefault();
-        console.log("Adding FAQ:", { question, answer });
+        createFAQ(question, answer).then((res) => {
+            if (res) {
+                dispatch({ type: ADD_FAQ, payload: res });
+            }
+        });
         closeModal();
     };
 
@@ -83,4 +89,5 @@ export default function AddFAQModal({ closeModal }) {
 
 AddFAQModal.propTypes = {
     closeModal: PropTypes.func,
+    dispatch: PropTypes.func,
 };

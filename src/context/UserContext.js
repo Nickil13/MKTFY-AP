@@ -101,7 +101,7 @@ export const UserContextProvider = ({ children }) => {
                 realm: process.env.REACT_APP_REALM,
                 email,
                 password,
-                redirectUri: "http://localhost:3000",
+                redirectUri: "http://localhost:3000/auth/login",
                 onRedirecting: function (done) {
                     done();
                 },
