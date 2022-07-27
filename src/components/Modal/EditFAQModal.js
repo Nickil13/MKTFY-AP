@@ -4,10 +4,16 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { ReactComponent as CloseIcon } from "assets/img/mktfy/icon_close.svg";
 import PropTypes from "prop-types";
-import { EDIT_FAQ } from "reducers/action-types";
-import { getFAQById, editFAQ } from "actions/faq";
+import { EDIT_FAQ, DELETE_FAQ } from "reducers/action-types";
+import { getFAQById, editFAQ, deleteFAQ } from "actions/faq";
 
-export default function EditFAQModal({ closeModal, FAQId, state, dispatch }) {
+export default function EditFAQModal({
+    closeModal,
+    FAQId,
+    setFAQId,
+    state,
+    dispatch,
+}) {
     const currentFAQ = state.FAQs?.find((faq) => faq.id === FAQId) || null;
     const [question, setQuestion] = useState(currentFAQ?.title || "");
     const [answer, setAnswer] = useState(currentFAQ?.description || "");
@@ -39,6 +45,19 @@ export default function EditFAQModal({ closeModal, FAQId, state, dispatch }) {
             }
         });
         closeModal();
+    };
+
+    const handleDeleteFAQ = () => {
+        deleteFAQ(FAQId).then((res) => {
+            if (res) {
+                const updatedFAQs = state.FAQs.filter(
+                    (faq) => faq.id !== FAQId
+                );
+                dispatch({ type: DELETE_FAQ, payload: updatedFAQs });
+            }
+        });
+        closeModal();
+        setFAQId("");
     };
 
     return (
@@ -101,6 +120,13 @@ export default function EditFAQModal({ closeModal, FAQId, state, dispatch }) {
                     >
                         Save Changes
                     </button>
+                    <button
+                        type="button"
+                        className="tw-btn  tw-max-w-[576px] tw-mt-4 tw-mx-auto tw-w-full tw-bg-transparent tw-text-[#969696] tw-border tw-border-[#969696] tw-shadow-none tw-border-solid"
+                        onClick={handleDeleteFAQ}
+                    >
+                        Delete FAQ
+                    </button>
                 </form>
             </CardBody>
         </Card>
@@ -110,6 +136,7 @@ export default function EditFAQModal({ closeModal, FAQId, state, dispatch }) {
 EditFAQModal.propTypes = {
     closeModal: PropTypes.func,
     FAQId: PropTypes.string,
+    setFAQId: PropTypes.func,
     dispatch: PropTypes.func,
     state: PropTypes.object,
 };

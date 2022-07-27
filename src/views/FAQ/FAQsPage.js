@@ -41,14 +41,6 @@ export default function FAQsRoutes() {
         setModalTitle("");
     };
 
-    // useEffect(() => {
-    //     if (modalShowing) {
-    //         document.body.style.overflow = "hidden";
-    //     } else {
-    //         document.body.style.overflow = "visible";
-    //     }
-    // }, [modalShowing]);
-
     return (
         <div className="tw-min-h-ap">
             {!FAQId ? (
@@ -105,6 +97,7 @@ export default function FAQsRoutes() {
                         <EditFAQModal
                             closeModal={closeModal}
                             FAQId={FAQId}
+                            setFAQId={setFAQId}
                             dispatch={dispatch}
                             state={state}
                         />

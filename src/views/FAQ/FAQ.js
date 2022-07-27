@@ -5,26 +5,12 @@ import CardBody from "components/Card/CardBody.js";
 import { ReactComponent as ChevronLeft } from "assets/img/mktfy/chevron-down.svg";
 import { modalTitles } from "variables/modalTitles";
 import PropTypes from "prop-types";
-import { deleteFAQ } from "actions/faq";
-import { DELETE_FAQ } from "reducers/action-types";
 
-export default function FAQ({ showModal, FAQId, state, setFAQId, dispatch }) {
+export default function FAQ({ showModal, FAQId, state, setFAQId }) {
     const FAQ = state.FAQs?.find((faq) => faq.id === FAQId) || null;
 
     const handleEditFAQ = () => {
         showModal(modalTitles.EDIT_FAQ);
-    };
-
-    const handleDeleteFAQ = () => {
-        deleteFAQ(FAQId).then((res) => {
-            if (res) {
-                const updatedFAQs = state.FAQs.filter(
-                    (faq) => faq.id !== FAQId
-                );
-                dispatch({ type: DELETE_FAQ, payload: updatedFAQs });
-            }
-        });
-        setFAQId("");
     };
 
     return (
@@ -47,12 +33,6 @@ export default function FAQ({ showModal, FAQId, state, setFAQId, dispatch }) {
                     >
                         Edit
                     </button>
-                    <button
-                        className="tw-bg-transparent tw-border-none tw-mr-10 tw-text-base tw-font-bold tw-text-white tw-cursor-pointer"
-                        onClick={handleDeleteFAQ}
-                    >
-                        Delete
-                    </button>
                 </div>
             </CardHeader>
             <CardBody className="tw-text-[21px] tw-leading-7 tw-pl-16 tw-pr-14 tw-text-black">
@@ -67,5 +47,4 @@ FAQ.propTypes = {
     setFAQId: PropTypes.func,
     showModal: PropTypes.func,
     state: PropTypes.object,
-    dispatch: PropTypes.func,
 };
