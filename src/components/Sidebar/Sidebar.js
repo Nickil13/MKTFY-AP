@@ -29,29 +29,16 @@ export default function Sidebar(props) {
     var links = (
         <List className={classes.list}>
             {routes.map((prop, key) => {
-                var activePro = " ";
-                var listItemClasses;
-                if (prop.path === "/upgrade-to-pro") {
-                    activePro = classes.activePro + " ";
-                    listItemClasses = classNames({
-                        [" " + classes[color]]: true,
-                    });
-                } else {
-                    listItemClasses = classNames({
-                        [" " + classes[color]]: activeRoute(
-                            prop.layout + prop.path
-                        ),
-                    });
-                }
-                const whiteFontClasses = classNames({
-                    [" " + classes.whiteFont]: activeRoute(
+                var listItemClasses = classNames({
+                    [" " + classes[color]]: activeRoute(
                         prop.layout + prop.path
                     ),
                 });
+
                 return (
                     <NavLink
                         to={prop.layout + prop.path}
-                        className={activePro + classes.item}
+                        className={classes.item}
                         activeClassName="active"
                         key={key}
                     >
@@ -59,42 +46,15 @@ export default function Sidebar(props) {
                             button
                             className={classes.itemLink + listItemClasses}
                         >
-                            {typeof prop.icon === "string" ? (
-                                <Icon
-                                    className={classNames(
-                                        classes.itemIcon,
-                                        whiteFontClasses,
-                                        {
-                                            [classes.itemIconRTL]:
-                                                props.rtlActive,
-                                        }
-                                    )}
-                                >
-                                    {prop.icon}
-                                </Icon>
-                            ) : (
-                                <prop.icon
-                                    className={classNames(
-                                        classes.itemIcon,
-                                        whiteFontClasses,
-                                        {
-                                            [classes.itemIconRTL]:
-                                                props.rtlActive,
-                                        }
-                                    )}
-                                />
-                            )}
+                            <img
+                                src={prop.icon}
+                                className={classes.itemIcon}
+                                alt="sidebar-icon"
+                            />
+
                             <ListItemText
-                                primary={
-                                    props.rtlActive ? prop.rtlName : prop.name
-                                }
-                                className={classNames(
-                                    classes.itemText,
-                                    whiteFontClasses,
-                                    {
-                                        [classes.itemTextRTL]: props.rtlActive,
-                                    }
-                                )}
+                                primary={prop.name}
+                                className={classNames(classes.itemText)}
                                 disableTypography={true}
                             />
                         </ListItem>
@@ -177,7 +137,14 @@ export default function Sidebar(props) {
 Sidebar.propTypes = {
     rtlActive: PropTypes.bool,
     handleDrawerToggle: PropTypes.func,
-    bgColor: PropTypes.oneOf(["purple", "blue", "green", "orange", "red"]),
+    bgColor: PropTypes.oneOf([
+        "purple",
+        "blue",
+        "green",
+        "orange",
+        "red",
+        "mktfyPurple",
+    ]),
     logo: PropTypes.string,
     image: PropTypes.string,
     logoText: PropTypes.string,

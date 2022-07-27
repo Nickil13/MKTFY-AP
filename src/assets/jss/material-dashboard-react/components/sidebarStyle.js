@@ -12,6 +12,7 @@ import {
     whiteColor,
     grayColor,
     blackColor,
+    mktfyPurpleColor,
     hexToRgb,
 } from "assets/jss/material-dashboard-react.js";
 import { font24 } from "assets/mktfy-styles";
@@ -150,7 +151,7 @@ const sidebarStyle = (theme) => ({
     itemIcon: {
         width: "24px",
         height: "30px",
-        fontSize: "24px",
+        fontSize: "18px",
         lineHeight: "30px",
         float: "left",
         marginRight: "15px",
@@ -164,7 +165,7 @@ const sidebarStyle = (theme) => ({
         margin: "0",
         lineHeight: "30px",
         fontSize: font24,
-        fontWeight: "400",
+        fontWeight: "600",
         color: whiteColor,
     },
 
@@ -264,6 +265,28 @@ const sidebarStyle = (theme) => ({
                 hexToRgb(blackColor) +
                 ",.12), 0 7px 8px -5px rgba(" +
                 hexToRgb(dangerColor[0]) +
+                ",.2)",
+        },
+    },
+    mktfyPurple: {
+        backgroundColor: mktfyPurpleColor[0],
+        boxShadow:
+            "0 12px 20px -10px rgba(" +
+            hexToRgb(mktfyPurpleColor[0]) +
+            ",.28), 0 4px 20px 0 rgba(" +
+            hexToRgb(blackColor) +
+            ",.12), 0 7px 8px -5px rgba(" +
+            hexToRgb(mktfyPurpleColor[0]) +
+            ",.2)",
+        "&:hover,&:focus": {
+            backgroundColor: mktfyPurpleColor[0],
+            boxShadow:
+                "0 12px 20px -10px rgba(" +
+                hexToRgb(mktfyPurpleColor[0]) +
+                ",.28), 0 4px 20px 0 rgba(" +
+                hexToRgb(blackColor) +
+                ",.12), 0 7px 8px -5px rgba(" +
+                hexToRgb(mktfyPurpleColor[0]) +
                 ",.2)",
         },
     },

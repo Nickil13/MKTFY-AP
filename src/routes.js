@@ -17,7 +17,10 @@
 */
 
 // route sidebar icons
-import Dashboard from "@material-ui/icons/Dashboard";
+import Dashboard from "assets/img/mktfy/grid.svg";
+import Tag from "assets/img/mktfy/tag.svg";
+import Users from "assets/img/mktfy/users.svg";
+import Question from "assets/img/mktfy/help-circle.svg";
 
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
@@ -36,21 +39,21 @@ const dashboardRoutes = [
     {
         path: "/listings",
         name: "Listings",
-        icon: Dashboard,
+        icon: Tag,
         component: Listings,
         layout: "/admin",
     },
     {
         path: "/user",
         name: "User",
-        icon: Dashboard,
+        icon: Users,
         component: User,
         layout: "/admin",
     },
     {
         path: "/FAQ",
         name: "FAQ",
-        icon: Dashboard,
+        icon: Question,
         component: FAQsPage,
         layout: "/admin",
     },

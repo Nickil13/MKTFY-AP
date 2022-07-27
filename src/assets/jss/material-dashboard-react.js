@@ -105,6 +105,19 @@ const goldCardHeader = {
         "linear-gradient(60deg, " + goldColor[0] + ", " + goldColor[1] + ")",
     ...goldBoxShadow,
 };
+const mktfyPurpleColor = ["#6E20BE"];
+const mktfyPurpleBoxShadow = {
+    boxShadow: "0px 6px 20px #6E20BE4D;",
+};
+const mktfyPurpleCardHeader = {
+    background:
+        "linear-gradient(60deg, " +
+        mktfyPurpleColor[0] +
+        ", " +
+        mktfyPurpleColor[1] +
+        ")",
+    ...mktfyPurpleBoxShadow,
+};
 
 const boxShadow = {
     boxShadow:
@@ -331,4 +344,7 @@ export {
     goldColor,
     goldBoxShadow,
     goldCardHeader,
+    mktfyPurpleColor,
+    mktfyPurpleBoxShadow,
+    mktfyPurpleCardHeader,
 };
