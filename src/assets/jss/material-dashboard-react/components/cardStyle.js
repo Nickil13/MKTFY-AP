@@ -3,7 +3,7 @@ import {
     whiteColor,
     hexToRgb,
 } from "assets/jss/material-dashboard-react.js";
-import { cardShadow } from "assets/mktfy-styles";
+// import { cardShadow } from "assets/mktfy-styles";
 
 const cardStyle = {
     card: {
@@ -14,16 +14,17 @@ const cardStyle = {
         color: "rgba(" + hexToRgb(blackColor) + ", 0.87)",
         background: whiteColor,
         width: "100%",
-        boxShadow: cardShadow,
+        // boxShadow: cardShadow,
+        boxShadow: "0 1px 4px 0 rgba(" + hexToRgb(blackColor) + ", 0.14)",
         position: "relative",
         display: "flex",
         flexDirection: "column",
         minWidth: "0",
         wordWrap: "break-word",
         fontSize: ".875rem",
-        "&.dashboard-card": {
-            maxWidth: "270px",
-        },
+        // "&.dashboard-card": {
+        //     maxWidth: "270px",
+        // },
     },
     cardPlain: {
         background: "transparent",

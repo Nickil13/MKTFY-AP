@@ -42,7 +42,7 @@ export default function FAQsRoutes() {
     };
 
     return (
-        <div className="tw-min-h-ap">
+        <div className="tw-min-h-ap tw-pt-7">
             {!FAQId ? (
                 <Card className="tw-min-h-ap">
                     <CardHeader

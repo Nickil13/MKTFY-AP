@@ -3,28 +3,21 @@ import React from "react";
 //import ChartistGraph from "react-chartist";
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
-import Icon from "@material-ui/core/Icon";
-// @material-ui/icons
-import Store from "@material-ui/icons/Store";
 
-import DateRange from "@material-ui/icons/DateRange";
-import LocalOffer from "@material-ui/icons/LocalOffer";
-import Update from "@material-ui/icons/Update";
-// import ArrowUpward from "@material-ui/icons/ArrowUpward";
+// @material-ui/icons
 import TrendingUp from "@material-ui/icons/TrendingUp";
-// import AccessTime from "@material-ui/icons/AccessTime";
-import Accessibility from "@material-ui/icons/Accessibility";
 
 // core components
 import GridItem from "components/Grid/GridItem.js";
 import GridContainer from "components/Grid/GridContainer.js";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
-import CardIcon from "components/Card/CardIcon.js";
 import CardBody from "components/Card/CardBody.js";
 import CardFooter from "components/Card/CardFooter.js";
+
 import usersIcon from "assets/img/mktfy/users.svg";
-// import { bugs, website, server } from "variables/general.js";
+import tagIcon from "assets/img/mktfy/tag.svg";
+import moneyIcon from "assets/img/mktfy/dollar-sign.svg";
 
 // import {
 //     dailySalesChart,
@@ -33,6 +26,7 @@ import usersIcon from "assets/img/mktfy/users.svg";
 // } from "variables/charts.js";
 
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
+import CustomDashboardCard from "components/Card/CustomDashboardCard";
 
 const useStyles = makeStyles(styles);
 
@@ -40,63 +34,43 @@ export default function Dashboard() {
     const classes = useStyles();
     return (
         <div>
+            <h2 className="tw-text-gray-600 tw-text-[30px] tw-my-0 tw-pb-14">
+                Today, August 23, 2021
+            </h2>
             <GridContainer>
-                <GridItem xs={12} sm={6} md={3}>
-                    <Card className="dashboard-card">
-                        <CardHeader color="gold" stats icon>
-                            <CardIcon color="gold">
-                                <img
-                                    className="card-icon_img"
-                                    src={usersIcon}
-                                    alt="users icon"
-                                />
-                                {/* <Icon>content_copy</Icon> */}
-                            </CardIcon>
-                            <p className={classes.cardCategory}>Total Users</p>
-                            <h3 className={classes.cardTitle}>250</h3>
-                            <p className={classes.subCardTitle}>
-                                Buyers and Sellers
-                            </p>
-                        </CardHeader>
-                        <CardFooter stats></CardFooter>
-                    </Card>
+                <GridItem xs={12} md={6} lg={4} xl={3}>
+                    <CustomDashboardCard
+                        icon={usersIcon}
+                        cardCategory="Total Users"
+                        cardValue="250"
+                        cardSubtitle="Buyers and Sellers"
+                    />
                 </GridItem>
-                <GridItem xs={12} sm={6} md={3}>
-                    <Card>
-                        <CardHeader color="success" stats icon>
-                            <CardIcon color="success">
-                                <Store />
-                            </CardIcon>
-                            <p className={classes.cardCategory}>Revenue</p>
-                            <h3 className={`${classes.cardTitle} `}>$34,245</h3>
-                        </CardHeader>
-                        <CardFooter stats>
-                            <div className={classes.stats}>
-                                <DateRange />
-                                Last 24 Hours
-                            </div>
-                        </CardFooter>
-                    </Card>
+                <GridItem xs={12} md={6} lg={4} xl={3}>
+                    <CustomDashboardCard
+                        icon={tagIcon}
+                        cardCategory="All Listings"
+                        cardValue="500"
+                        cardSubtitle="This month"
+                    />
                 </GridItem>
-                <GridItem xs={12} sm={6} md={3}>
-                    <Card>
-                        <CardHeader color="danger" stats icon>
-                            <CardIcon color="danger">
-                                <Icon>info_outline</Icon>
-                            </CardIcon>
-                            <p className={classes.cardCategory}>Fixed Issues</p>
-                            <h3 className={classes.cardTitle}>75</h3>
-                        </CardHeader>
-                        <CardFooter stats>
-                            <div className={classes.stats}>
-                                <LocalOffer />
-                                Tracked from Github
-                            </div>
-                        </CardFooter>
-                    </Card>
+                <GridItem xs={12} md={6} lg={4} xl={3}>
+                    <CustomDashboardCard
+                        reactIcon="user-plus"
+                        cardCategory="New Users"
+                        cardValue="+45"
+                        cardSubtitle="Today"
+                    />
                 </GridItem>
-                <GridItem xs={12} sm={6} md={3}>
-                    <Card>
+                <GridItem xs={12} md={6} lg={4} xl={3}>
+                    <CustomDashboardCard
+                        icon={moneyIcon}
+                        cardCategory="Avg Sales"
+                        cardValue="1000"
+                        cardSubtitle="Per day"
+                        cardFooterText="Calculated over the last year"
+                    />
+                    {/* <Card>
                         <CardHeader color="info" stats icon>
                             <CardIcon color="info">
                                 <Accessibility />
@@ -110,7 +84,7 @@ export default function Dashboard() {
                                 Just Updated
                             </div>
                         </CardFooter>
-                    </Card>
+                    </Card> */}
                 </GridItem>
             </GridContainer>
             <GridContainer>
