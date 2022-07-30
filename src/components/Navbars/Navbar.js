@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -17,19 +17,39 @@ import Button from "components/CustomButtons/Button.js";
 import { useRouteName } from "hooks";
 
 import styles from "assets/jss/material-dashboard-react/components/headerStyle.js";
+import EditUserModal from "components/Modal/EditUserModal.js";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles(styles);
 
 export default function Header(props) {
     const classes = useStyles();
-    const routeName = useRouteName();
+    let routeName = useRouteName();
+    let location = useLocation();
     const { color } = props;
     const appBarClasses = classNames({
         [" " + classes[color]]: color,
     });
+    const [modalShowing, setModalShowing] = useState(false);
+    const showModal = () => {
+        setModalShowing(true);
+    };
+    const closeModal = () => {
+        setModalShowing(false);
+    };
+
+    useEffect(() => {
+        routeName = useRouteName();
+    }, [location]);
+
     return (
         <AppBar className={classes.appBar + appBarClasses}>
-            <Toolbar className={classes.container}>
+            <Toolbar
+                className={
+                    classes.container +
+                    "tw-flex tw-items-end tw-h-[122px] tw-p-5 tw-box-border tw-border-transparent tw-border-b tw-border-b-gray-200 tw-border-solid tw-ml-8 tw-pl-0 tw-mr-24"
+                }
+            >
                 <div className={classes.flex}>
                     {/* Here we create navbar brand, based on route name */}
                     <Button
@@ -37,14 +57,14 @@ export default function Header(props) {
                         href="#"
                         className={
                             classes.title +
-                            " tw-text-[30px] tw-text-gray-600 tw-font-normal"
+                            " tw-text-[30px] tw-text-gray-600 tw-font-normal tw-pl-0"
                         }
                     >
                         {routeName}
                     </Button>
                 </div>
                 <Hidden smDown implementation="css">
-                    <AdminNavbarLinks />
+                    <AdminNavbarLinks showModal={showModal} />
                 </Hidden>
                 <Hidden mdUp implementation="css">
                     <IconButton
@@ -56,6 +76,12 @@ export default function Header(props) {
                     </IconButton>
                 </Hidden>
             </Toolbar>
+            {/* Edit User Nav Modal */}
+            {modalShowing && (
+                <div className="tw-modal-container">
+                    <EditUserModal closeModal={closeModal} />
+                </div>
+            )}
         </AppBar>
     );
 }

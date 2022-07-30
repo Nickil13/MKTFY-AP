@@ -10,7 +10,6 @@ import Hidden from "@material-ui/core/Hidden";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import Icon from "@material-ui/core/Icon";
 // core components
 import AdminNavbarLinks from "components/Navbars/AdminNavbarLinks.js";
 
@@ -25,7 +24,7 @@ export default function Sidebar(props) {
     function activeRoute(routeName) {
         return location.pathname === routeName;
     }
-    const { color, logo, image, logoText, routes } = props;
+    const { color, logo, image, routes } = props;
     var links = (
         <List className={classes.list}>
             {routes.map((prop, key) => {
@@ -65,17 +64,9 @@ export default function Sidebar(props) {
     );
     var brand = (
         <div className={classes.logo}>
-            {/* <a
-        href="https://www.creative-tim.com?ref=mdr-sidebar"
-        className={classNames(classes.logoLink, {
-          [classes.logoLinkRTL]: props.rtlActive,
-        })}
-        target="_blank"
-      > */}
             <div className={classes.logoImage}>
                 <img src={logo} alt="logo" className={classes.img} />
             </div>
-            {/* </a> */}
         </div>
     );
     return (
@@ -83,12 +74,10 @@ export default function Sidebar(props) {
             <Hidden mdUp implementation="css">
                 <Drawer
                     variant="temporary"
-                    anchor={props.rtlActive ? "left" : "right"}
+                    anchor="left"
                     open={props.open}
                     classes={{
-                        paper: classNames(classes.drawerPaper, {
-                            [classes.drawerPaperRTL]: props.rtlActive,
-                        }),
+                        paper: classNames(classes.drawerPaper),
                     }}
                     onClose={props.handleDrawerToggle}
                     ModalProps={{
@@ -111,13 +100,11 @@ export default function Sidebar(props) {
             </Hidden>
             <Hidden smDown implementation="css">
                 <Drawer
-                    anchor={props.rtlActive ? "right" : "left"}
+                    anchor="left"
                     variant="permanent"
                     open
                     classes={{
-                        paper: classNames(classes.drawerPaper, {
-                            [classes.drawerPaperRTL]: props.rtlActive,
-                        }),
+                        paper: classNames(classes.drawerPaper),
                     }}
                 >
                     {brand}
@@ -147,7 +134,6 @@ Sidebar.propTypes = {
     ]),
     logo: PropTypes.string,
     image: PropTypes.string,
-    logoText: PropTypes.string,
     routes: PropTypes.arrayOf(PropTypes.object),
     open: PropTypes.bool,
 };

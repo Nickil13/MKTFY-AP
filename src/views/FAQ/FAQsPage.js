@@ -83,7 +83,7 @@ export default function FAQsRoutes() {
             )}
 
             {modalShowing && (
-                <div className="tw-fixed tw-flex tw-items-center md:tw-pl-drawer tw-justify-center tw-inset-0 tw-bg-[#000000]/20 tw-z-[9999]">
+                <div className="tw-modal-container">
                     {/* Add Question Modal */}
                     {modalTitle === modalTitles.ADD_FAQ && (
                         <AddFAQModal

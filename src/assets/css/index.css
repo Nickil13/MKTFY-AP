@@ -4,7 +4,7 @@
 
 @layer components {
     .tw-input {
-        @apply tw-px-6 tw-py-5 placeholder:tw-text-gray-200 placeholder:tw-font-semibold tw-text-base tw-rounded tw-border-solid tw-border tw-border-gray-100 focus:tw-outline focus:tw-outline-purple-400 focus:tw-outline-1;
+        @apply tw-px-6 tw-py-5 placeholder:tw-text-gray-200 placeholder:tw-font-semibold tw-text-base tw-rounded tw-border-solid tw-border tw-border-gray-100 focus:tw-outline focus:tw-outline-purple-400 focus:tw-outline-1 tw-box-border;
     }
     .tw-btn {
         @apply tw-rounded-full tw-border-none tw-font-bold tw-text-base tw-py-5 tw-max-h-[64px] tw-text-white tw-shadow-btn disabled:tw-bg-gray-100 disabled:tw-shadow-none disabled:tw-pointer-events-none tw-cursor-pointer;
@@ -14,5 +14,9 @@
     }
     .tw-btn-gold {
         @apply tw-btn tw-bg-gold-200 hover:tw-bg-gold-100;
+    }
+
+    .tw-modal-container {
+        @apply tw-fixed tw-flex tw-items-center md:tw-pl-drawer tw-justify-center tw-inset-0 tw-bg-[#000000]/20 tw-z-[9999];
     }
 }

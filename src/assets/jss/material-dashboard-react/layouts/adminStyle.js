@@ -3,6 +3,7 @@ import {
     transition,
     container,
 } from "assets/jss/material-dashboard-react.js";
+import { navHeight } from "assets/mktfy-styles";
 
 const appStyle = (theme) => ({
     wrapper: {
@@ -23,9 +24,9 @@ const appStyle = (theme) => ({
         overflowScrolling: "touch",
     },
     content: {
-        marginTop: "70px",
+        marginTop: navHeight,
         padding: "30px 15px",
-        minHeight: "calc(100vh - 123px)",
+        minHeight: `calc(100vh - ${navHeight}px)`,
     },
     container,
     map: {
