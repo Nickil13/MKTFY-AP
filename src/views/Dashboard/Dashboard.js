@@ -1,6 +1,6 @@
 import React from "react";
 // react plugin for creating charts
-//import ChartistGraph from "react-chartist";
+import ChartistGraph from "react-chartist";
 // @material-ui/core
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -19,11 +19,7 @@ import usersIcon from "assets/img/mktfy/users.svg";
 import tagIcon from "assets/img/mktfy/tag.svg";
 import moneyIcon from "assets/img/mktfy/dollar-sign.svg";
 
-// import {
-//     dailySalesChart,
-//     // emailsSubscriptionChart,
-//     // completedTasksChart,
-// } from "variables/charts.js";
+import { dailySalesChart } from "variables/charts.js";
 
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 import CustomDashboardCard from "components/Card/CustomDashboardCard";
@@ -70,118 +66,55 @@ export default function Dashboard() {
                         cardSubtitle="Per day"
                         cardFooterText="Calculated over the last year"
                     />
-                    {/* <Card>
-                        <CardHeader color="info" stats icon>
-                            <CardIcon color="info">
-                                <Accessibility />
-                            </CardIcon>
-                            <p className={classes.cardCategory}>Followers</p>
-                            <h3 className={classes.cardTitle}>+245</h3>
-                        </CardHeader>
-                        <CardFooter stats>
-                            <div className={classes.stats}>
-                                <Update />
-                                Just Updated
-                            </div>
-                        </CardFooter>
-                    </Card> */}
                 </GridItem>
             </GridContainer>
-            <GridContainer>
-                <GridItem xs={12} sm={12} md={4}>
-                    <Card chart>
-                        <CardHeader color="success">
-                            {/* <ChartistGraph
-                                className="ct-chart"
+            <GridContainer className="tw-pt-[65px]">
+                <GridItem xs={12} sm={12} md={6}>
+                    <Card chart className="tw-w-full tw-max-w-[645px]">
+                        <CardHeader
+                            color="mktfyPurple"
+                            className="tw-flex tw-content-center tw-justify-center tw-mx-6 tw-p-8 tw-rounded-lg tw-min-h-[287px] -tw-mt-10"
+                        >
+                            <ChartistGraph
+                                className="ct-chart tw-w-full"
                                 data={dailySalesChart.data}
                                 type="Line"
                                 options={dailySalesChart.options}
                                 listener={dailySalesChart.animation}
-                            /> */}
+                            />
                         </CardHeader>
                         <CardBody>
-                            <h4 className={classes.cardTitle}>
+                            <h4
+                                className={
+                                    classes.cardTitle +
+                                    " tw-text-base-lg tw-font-light tw-mt-5"
+                                }
+                            >
                                 Sales per day over a month
                             </h4>
                             <p className={classes.cardCategory}>
-                                <span className={classes.successText}>
+                                <span
+                                    className={
+                                        classes.successText + " tw-text-[21px]"
+                                    }
+                                >
                                     <TrendingUp
-                                        className={classes.upArrowCardCategory}
+                                        className={
+                                            classes.upArrowCardCategory +
+                                            "tw-box-border tw-w-6"
+                                        }
                                     />{" "}
                                     55%
                                 </span>{" "}
-                                Increase in this weeks sales.
+                                <span className="tw-text-[18px] tw-ml-3">
+                                    Increase in this weeks sales.
+                                </span>
                             </p>
                         </CardBody>
                         <CardFooter chart></CardFooter>
                     </Card>
                 </GridItem>
             </GridContainer>
-            {/* <GridContainer>
-        <GridItem xs={12} sm={12} md={6}>
-          <CustomTabs
-            title="Tasks:"
-            headerColor="primary"
-            tabs={[
-              {
-                tabName: "Bugs",
-                tabIcon: BugReport,
-                tabContent: (
-                  <Tasks
-                    checkedIndexes={[0, 3]}
-                    tasksIndexes={[0, 1, 2, 3]}
-                    tasks={bugs}
-                  />
-                ),
-              },
-              {
-                tabName: "Website",
-                tabIcon: Code,
-                tabContent: (
-                  <Tasks
-                    checkedIndexes={[0]}
-                    tasksIndexes={[0, 1]}
-                    tasks={website}
-                  />
-                ),
-              },
-              {
-                tabName: "Server",
-                tabIcon: Cloud,
-                tabContent: (
-                  <Tasks
-                    checkedIndexes={[1]}
-                    tasksIndexes={[0, 1, 2]}
-                    tasks={server}
-                  />
-                ),
-              },
-            ]}
-          />
-        </GridItem>
-        <GridItem xs={12} sm={12} md={6}>
-          <Card>
-            <CardHeader color="warning">
-              <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
-              <p className={classes.cardCategoryWhite}>
-                New employees on 15th September, 2016
-              </p>
-            </CardHeader>
-            <CardBody>
-              <Table
-                tableHeaderColor="warning"
-                tableHead={["ID", "Name", "Salary", "Country"]}
-                tableData={[
-                  ["1", "Dakota Rice", "$36,738", "Niger"],
-                  ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                  ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                  ["4", "Philip Chaney", "$38,735", "Korea, South"],
-                ]}
-              />
-            </CardBody>
-          </Card>
-        </GridItem>
-      </GridContainer> */}
         </div>
     );
 }

@@ -20,7 +20,7 @@ export default function CustomDashboardCard({
 
     return (
         <Card className="tw-rounded-[10px] tw-shadow-[0px_9px_20px_#00000024] tw-max-w-[260px] tw-min-w-[260px]">
-            <CardHeader className="" color="gold" stats icon>
+            <CardHeader color="gold" stats icon>
                 <CardIcon
                     color="gold"
                     className="tw-flex tw-items-center tw-justify-center tw-box-border tw-h-[90px] tw-w-[90px] -tw-mt-10 tw-rounded-md"
@@ -37,7 +37,7 @@ export default function CustomDashboardCard({
                 <p
                     className={
                         classes.cardCategory +
-                        " tw-text-[24px] tw-font-light tw-pt-[13px]"
+                        " tw-text-base-lg tw-font-light tw-pt-[13px]"
                     }
                 >
                     {cardCategory}

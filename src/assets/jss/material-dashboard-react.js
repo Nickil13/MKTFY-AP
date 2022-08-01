@@ -105,7 +105,7 @@ const goldCardHeader = {
         "linear-gradient(60deg, " + goldColor[0] + ", " + goldColor[1] + ")",
     ...goldBoxShadow,
 };
-const mktfyPurpleColor = ["#6E20BE"];
+const mktfyPurpleColor = ["#6E20BE", "#6E20BE"];
 const mktfyPurpleBoxShadow = {
     boxShadow: "0px 6px 20px #6E20BE4D;",
 };

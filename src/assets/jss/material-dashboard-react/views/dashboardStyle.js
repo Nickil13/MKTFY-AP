@@ -4,7 +4,7 @@ import {
     grayColor,
     hexToRgb,
 } from "assets/jss/material-dashboard-react.js";
-// import { font21 } from "assets/mktfy-styles";
+
 import { clrGrayDark, clrGrayLight } from "assets/mktfy-styles";
 const dashboardStyle = {
     successText: {
@@ -39,8 +39,6 @@ const dashboardStyle = {
         color: clrGrayLight,
         margin: "0",
         fontSize: "14px",
-        // fontSize: font24,
-        // fontWeight: "300",
         marginTop: "0",
         paddingTop: "10px",
         marginBottom: "0",
@@ -55,13 +53,9 @@ const dashboardStyle = {
     cardTitle: {
         color: clrGrayDark,
         marginTop: "0px",
-        // paddingTop: "51px",
         minHeight: "auto",
-        // fontSize: font45,
-        // fontWeight: "bold",
         fontWeight: "300",
         marginBottom: "3px",
-        // display: "inline-block",
         paddingBottom: "6px",
         textDecoration: "none",
         "& small": {
@@ -70,19 +64,6 @@ const dashboardStyle = {
             lineHeight: "1",
         },
     },
-    // subCardTitle: {
-    //     color: clrGrayLight,
-    //     marginTop: "0px",
-    //     minHeight: "auto",
-    //     fontSize: font21,
-    //     marginBottom: "3px",
-    //     textDecoration: "none",
-    //     "& small": {
-    //         color: grayColor[1],
-    //         fontWeight: "400",
-    //         lineHeight: "1",
-    //     },
-    // },
     cardTitleWhite: {
         color: whiteColor,
         marginTop: "0px",

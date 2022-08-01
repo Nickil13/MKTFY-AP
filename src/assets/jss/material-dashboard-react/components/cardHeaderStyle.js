@@ -8,6 +8,8 @@ import {
     whiteColor,
     goldCardHeader,
     goldColor,
+    mktfyPurpleCardHeader,
+    mktfyPurpleColor,
 } from "assets/jss/material-dashboard-react.js";
 
 const cardHeaderStyle = {
@@ -17,7 +19,7 @@ const cardHeaderStyle = {
         borderBottom: "none",
         background: "transparent",
         zIndex: "3 !important",
-        "&$cardHeaderPlain,&$cardHeaderIcon,&$cardHeaderStats,&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader,&$goldCardHeader": {
+        "&$cardHeaderPlain,&$cardHeaderIcon,&$cardHeaderStats,&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader,&$goldCardHeader,&$mktfyPurpleCardHeader": {
             margin: "0 15px",
             padding: "0",
             position: "relative",
@@ -26,7 +28,7 @@ const cardHeaderStyle = {
         "&:first-child": {
             borderRadius: "calc(.25rem - 1px) calc(.25rem - 1px) 0 0",
         },
-        "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader,&$goldCardHeader": {
+        "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader,&$goldCardHeader,&$mktfyPurpleCardHeader": {
             "&:not($cardHeaderIcon)": {
                 borderRadius: "3px",
                 marginTop: "-20px",
@@ -67,7 +69,7 @@ const cardHeaderStyle = {
         },
     },
     cardHeaderIcon: {
-        "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader,&$goldCardHeader": {
+        "&$warningCardHeader,&$successCardHeader,&$dangerCardHeader,&$infoCardHeader,&$primaryCardHeader,&$roseCardHeader,&$goldCardHeader,&$mktfyPurpleCardHeader": {
             background: "transparent",
             boxShadow: "none",
         },
@@ -89,6 +91,12 @@ const cardHeaderStyle = {
         color: goldColor,
         "&:not($cardHeaderIcon)": {
             ...goldCardHeader,
+        },
+    },
+    mktfyPurpleCardHeader: {
+        color: mktfyPurpleColor,
+        "&:not($cardHeaderIcon)": {
+            ...mktfyPurpleCardHeader,
         },
     },
     warningCardHeader: {

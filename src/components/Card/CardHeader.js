@@ -40,6 +40,7 @@ CardHeader.propTypes = {
         "primary",
         "rose",
         "gold",
+        "mktfyPurple",
     ]),
     plain: PropTypes.bool,
     stats: PropTypes.bool,

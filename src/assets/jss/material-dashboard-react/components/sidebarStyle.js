@@ -92,8 +92,9 @@ const sidebarStyle = (theme) => ({
         display: "block",
         top: "0",
         left: "0",
+        backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        backgroundPosition: "center center",
+        backgroundPosition: "75% center",
         "&:after": {
             position: "absolute",
             zIndex: "3",

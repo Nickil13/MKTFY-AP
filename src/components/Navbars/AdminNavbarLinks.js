@@ -47,31 +47,47 @@ export default function AdminNavbarLinks({ showModal }) {
     return (
         <div className="tw-flex tw-flex-col md:tw-flex-row">
             {routeName !== "Dashboard" && (
-                <div className={classes.searchWrapper}>
+                <div
+                    className={
+                        classes.searchWrapper +
+                        " tw-flex tw-items-center tw-justify-between tw-bg-white tw-rounded-lg tw-shadow-navbar tw-min-w-[175px] lg:tw-min-w-[345px] tw-max-w-[345px] tw-w-full tw-h-[60px] tw-self-center tw-pl-5 tw-box-border tw-mr-20"
+                    }
+                >
                     <CustomInput
                         formControlProps={{
-                            className: classes.margin + " " + classes.search,
+                            className:
+                                classes.margin + " " + classes.search + "",
                         }}
                         inputProps={{
+                            className:
+                                "tw-p-0 tw-pt-1 tw-font-mktfy tw-font-semibold",
                             placeholder: "Search",
                             inputProps: {
                                 "aria-label": "Search",
                             },
+                            disableUnderline: true,
                         }}
                     />
-                    <Button color="white" aria-label="edit" justIcon round>
-                        <Search />
+                    <Button
+                        color="white"
+                        className="tw-shadow-none tw-p-0"
+                        aria-label="edit"
+                        justIcon
+                        round
+                    >
+                        <Search className="tw-w-6 tw-h-6 tw-text-black" />
                     </Button>
                 </div>
             )}
 
             <div className={classes.manager}>
+                {/* Admin User Dropdown Button */}
                 <button
-                    className="tw-flex tw-items-center tw-border-y-0 tw-border-x-0 tw-pr-7 md:tw-pr-1.5 md:tw-ml-8 md:tw-pl-8 md:tw-border-l tw-bg-transparent"
+                    className="tw-flex tw-items-center tw-border-y-0 tw-border-x-0 tw-pr-7 md:tw-pr-1.5 md:tw-ml-8 md:tw-pl-8 md:tw-border-l tw-bg-transparent lg:tw-min-w-[305px] tw-max-w-[305px]"
                     aria-owns={openProfile ? "profile-menu-list-grow" : null}
                     aria-haspopup="true"
                 >
-                    <p className="tw-mr-[71px] tw-font-semibold tw-text-[24px] tw-text-gray-600">
+                    <p className="tw-mr-[71px] tw-font-semibold tw-text-base-lg tw-text-gray-600">
                         <span className="tw-font-bold">MKTFY </span>ADMIN
                     </p>
                     <DownArrow
@@ -101,7 +117,7 @@ export default function AdminNavbarLinks({ showModal }) {
                                         : "center bottom",
                             }}
                         >
-                            <Paper className="tw-pt-10 tw-rounded-lg tw-shadow-[0px_3px_6px_#00000029] tw-overflow-hidden">
+                            <Paper className="tw-pt-10 tw-rounded-lg tw-shadow-navbar tw-overflow-hidden">
                                 <ClickAwayListener
                                     onClickAway={handleCloseProfile}
                                 >
@@ -116,7 +132,7 @@ export default function AdminNavbarLinks({ showModal }) {
                                             }}
                                             className={
                                                 classes.dropdownItem +
-                                                " tw-text-[24px] tw-text-purple-400 tw-mb-8 tw-pl-9 tw-ml-0"
+                                                " tw-text-base-lg tw-text-purple-400 tw-mb-8 tw-pl-9 tw-ml-0"
                                             }
                                         >
                                             Edit Profile
@@ -126,7 +142,7 @@ export default function AdminNavbarLinks({ showModal }) {
                                             onClick={handleLogout}
                                             className={
                                                 classes.dropdownItem +
-                                                " tw-text-[#5B2BAE] tw-text-[24px] md:tw-text-[28px] md:tw-bg-beige-200 tw-p-9 tw-mx-0"
+                                                " tw-text-[#5B2BAE] tw-text-base-lg md:tw-text-[28px] md:tw-bg-beige-200 tw-p-9 tw-mx-0"
                                             }
                                         >
                                             Logout

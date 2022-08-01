@@ -46,6 +46,7 @@ module.exports = {
             "sm-16": "1rem",
             "sm-17": "1.0625rem",
             base: "1.25rem",
+            "base-lg": "1.5rem",
             "lg-36": "2.25rem",
             lg: "2.5rem",
             xl: "2.625rem",
@@ -59,6 +60,7 @@ module.exports = {
                 "card-header": "0px 6px 20px #00000024",
                 modal: "0px 7px 12px #00000024",
                 btn: "0px 5px 20px #00000024",
+                navbar: "0px 3px 6px #00000029",
             },
             height: {
                 "ap-nav": "153px",
