@@ -26,7 +26,7 @@ import Question from "assets/img/mktfy/help-circle.svg";
 import DashboardPage from "views/Dashboard/Dashboard.js";
 import { FAQsPage } from "views/FAQ";
 import Listings from "views/Listings";
-import User from "views/User";
+import UserManagement from "views/Users/UserManagement";
 
 const dashboardRoutes = [
     {
@@ -47,7 +47,7 @@ const dashboardRoutes = [
         path: "/user",
         name: "User",
         icon: Users,
-        component: User,
+        component: UserManagement,
         layout: "/admin",
     },
     {

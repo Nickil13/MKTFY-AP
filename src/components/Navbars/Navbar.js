@@ -47,7 +47,7 @@ export default function Header(props) {
             <Toolbar
                 className={
                     classes.container +
-                    "tw-flex tw-items-end tw-h-[122px] tw-p-5 tw-box-border tw-border-transparent tw-border-b tw-border-b-gray-200 tw-border-solid tw-ml-8 tw-pl-0 tw-mr-24"
+                    "tw-flex tw-items-end tw-h-[122px] tw-p-5 tw-box-border tw-border-transparent tw-border-b tw-border-b-gray-200 tw-border-solid tw-ml-8 tw-pl-0 tw-mr-10 lg:tw-mr-24"
                 }
             >
                 <div className={classes.flex}>

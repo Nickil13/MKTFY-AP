@@ -21,7 +21,7 @@ export default function FAQ({ showModal, FAQId, state, setFAQId }) {
             >
                 <h3 className="tw-font-semibold tw-text-xl tw-text-start tw-m-0">
                     <ChevronLeft
-                        className="tw-mr-10 tw-h-7 tw-fill-white tw-rotate-90 tw-cursor-pointer"
+                        className="tw-mr-10 tw-h-7 tw-stroke-white tw-rotate-90 tw-cursor-pointer"
                         onClick={() => setFAQId("")}
                     />
                     {FAQ?.title}

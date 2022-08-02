@@ -87,11 +87,11 @@ export default function AdminNavbarLinks({ showModal }) {
                     aria-owns={openProfile ? "profile-menu-list-grow" : null}
                     aria-haspopup="true"
                 >
-                    <p className="tw-mr-[71px] tw-font-semibold tw-text-base-lg tw-text-gray-600">
+                    <p className="tw-mr-6 lg:tw-mr-[71px] tw-font-semibold tw-text-base-lg tw-text-gray-600">
                         <span className="tw-font-bold">MKTFY </span>ADMIN
                     </p>
                     <DownArrow
-                        className="tw-w-6 tw-cursor-pointer"
+                        className="tw-w-6 tw-cursor-pointer tw-stroke-[#6B6B6C]"
                         onClick={handleClickProfile}
                     />
                 </button>

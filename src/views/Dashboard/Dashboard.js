@@ -34,7 +34,7 @@ export default function Dashboard() {
                 Today, August 23, 2021
             </h2>
             <GridContainer>
-                <GridItem xs={12} md={6} lg={4} xl={3}>
+                <GridItem xs={12} sm={6} md={6} lg={4} xl={3}>
                     <CustomDashboardCard
                         icon={usersIcon}
                         cardCategory="Total Users"
@@ -42,7 +42,7 @@ export default function Dashboard() {
                         cardSubtitle="Buyers and Sellers"
                     />
                 </GridItem>
-                <GridItem xs={12} md={6} lg={4} xl={3}>
+                <GridItem xs={12} sm={6} md={6} lg={4} xl={3}>
                     <CustomDashboardCard
                         icon={tagIcon}
                         cardCategory="All Listings"
@@ -50,7 +50,7 @@ export default function Dashboard() {
                         cardSubtitle="This month"
                     />
                 </GridItem>
-                <GridItem xs={12} md={6} lg={4} xl={3}>
+                <GridItem xs={12} sm={6} md={6} lg={4} xl={3}>
                     <CustomDashboardCard
                         reactIcon="user-plus"
                         cardCategory="New Users"
@@ -58,7 +58,7 @@ export default function Dashboard() {
                         cardSubtitle="Today"
                     />
                 </GridItem>
-                <GridItem xs={12} md={6} lg={4} xl={3}>
+                <GridItem xs={12} sm={6} md={6} lg={4} xl={3}>
                     <CustomDashboardCard
                         icon={moneyIcon}
                         cardCategory="Avg Sales"
@@ -69,7 +69,7 @@ export default function Dashboard() {
                 </GridItem>
             </GridContainer>
             <GridContainer className="tw-pt-[65px]">
-                <GridItem xs={12} sm={12} md={6}>
+                <GridItem xs={12} sm={12} md={12} xl={6}>
                     <Card chart className="tw-w-full tw-max-w-[645px]">
                         <CardHeader
                             color="mktfyPurple"
