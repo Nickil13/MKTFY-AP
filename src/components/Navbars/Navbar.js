@@ -60,7 +60,7 @@ export default function Header(props) {
                             " tw-text-[30px] tw-text-gray-600 tw-font-normal tw-pl-0"
                         }
                     >
-                        {routeName}
+                        {routeName === "User" ? "User Management" : routeName}
                     </Button>
                 </div>
                 <Hidden smDown implementation="css">

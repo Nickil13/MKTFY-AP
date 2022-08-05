@@ -13,7 +13,9 @@ import droneImage from "assets/img/mktfy/dummyImages/drone.jpg";
 import bbImage from "assets/img/mktfy/dummyImages/bb8.jpg";
 import { ReactComponent as CloseIcon } from "assets/img/mktfy/icon_close.svg";
 import Toggle from "./Toggle";
-const UserListing = ({ img, active }) => {
+import Pagination from "./Pagination";
+import DeleteListingModal from "components/Modal/DeleteListingModal";
+const UserListing = ({ img, active, showModal }) => {
     return (
         <li className="tw-flex tw-h-[214px] tw-rounded-[10px] tw-overflow-hidden tw-bg-[#F4F4F5]">
             <img
@@ -33,8 +35,12 @@ const UserListing = ({ img, active }) => {
                 </span>
             </div>
             {active && (
-                <span className="tw-flex tw-flex-col tw-justify-center tw-ml-auto tw-mr-15 tw-items-center tw-text-red tw-text-[18px] tw-font-semibold">
-                    <CloseIcon className="tw-fill-red" /> Delete
+                <span
+                    className="tw-flex tw-flex-col tw-justify-center tw-ml-auto tw-mr-15 tw-items-center tw-text-red tw-text-[18px] tw-font-semibold tw-cursor-pointer"
+                    onClick={showModal}
+                >
+                    <CloseIcon className="tw-fill-red" />
+                    Delete
                 </span>
             )}
         </li>
@@ -43,11 +49,18 @@ const UserListing = ({ img, active }) => {
 UserListing.propTypes = {
     img: PropTypes.string,
     active: PropTypes.bool,
+    showModal: PropTypes.func,
 };
 
 export default function User({ setUserId }) {
     const [showActiveListings, setShowActiveListings] = useState(true);
     const [isBlocked, setIsBlocked] = useState(false);
+    const [modalShowing, setModalShowing] = useState(false);
+
+    React.useEffect(() => {
+        console.log("modal toggled");
+    }, [modalShowing]);
+
     return (
         <div className="tw-flex tw-flex-col tw-min-h-ap">
             {/* Header */}
@@ -94,7 +107,7 @@ export default function User({ setUserId }) {
                             showActiveListings
                                 ? "tw-text-purple-400 tw-underline"
                                 : "tw-text-gray-400"
-                        }  tw-border-none tw-bg-transparent tw-font-semibold tw-text-[28px] tw-mr-16`}
+                        }  tw-border-none tw-bg-transparent tw-font-semibold tw-text-[28px] tw-mr-16 tw-cursor-pointer`}
                         onClick={() => setShowActiveListings(true)}
                     >
                         User Listings
@@ -104,7 +117,7 @@ export default function User({ setUserId }) {
                             !showActiveListings
                                 ? "tw-text-purple-400 tw-underline"
                                 : "tw-text-gray-400"
-                        }  tw-border-none tw-bg-transparent tw-font-semibold tw-text-[28px]`}
+                        }  tw-border-none tw-bg-transparent tw-font-semibold tw-text-[28px] tw-cursor-pointer`}
                         onClick={() => setShowActiveListings(false)}
                     >
                         Purchased Listings
@@ -112,9 +125,21 @@ export default function User({ setUserId }) {
                 </div>
                 {showActiveListings ? (
                     <ul className="tw-flex tw-flex-col tw-list-none tw-pl-0 tw-gap-5">
-                        <UserListing img={yellowFrogImage} active />
-                        <UserListing img={greenFrogImage} active />
-                        <UserListing img={blueFrogImage} active />
+                        <UserListing
+                            img={yellowFrogImage}
+                            showModal={() => setModalShowing(true)}
+                            active
+                        />
+                        <UserListing
+                            img={greenFrogImage}
+                            showModal={() => setModalShowing(true)}
+                            active
+                        />
+                        <UserListing
+                            img={blueFrogImage}
+                            showModal={() => setModalShowing(true)}
+                            active
+                        />
                     </ul>
                 ) : (
                     <ul className="tw-flex tw-flex-col  tw-list-none tw-pl-0 tw-rounded-[10px] tw-gap-5">
@@ -122,21 +147,16 @@ export default function User({ setUserId }) {
                         <UserListing img={bbImage} />
                     </ul>
                 )}
-                {/* Pagination */}
-                <div className="tw-flex tw-items-center tw-border-gray-footer-border tw-border-solid tw-border-[0.5px] tw-rounded-[10px] tw-self-end tw-h-[48px] tw-mt-10">
-                    <div className="tw-p-3">
-                        <ChevronLeft className="tw-w-1.4 tw-h-3 tw-stroke-purple-100 tw-rotate-90 " />
-                    </div>
-                    <div className="tw-border-gray-footer-border tw-border-solid tw-border-[0.5px] tw-border-y-transparent tw-h-full tw-box-border tw-bg-[#F4F4F5] tw-text-gray-600 tw-text-[21px] tw-py-2.5 tw-px-7">
-                        1
-                    </div>
-                    <div className="tw-p-3">
-                        <ChevronLeft className="tw-w-1.4 tw-h-3 tw-stroke-purple-100 -tw-rotate-90 " />
-                    </div>
-                </div>
+                <Pagination />
             </div>
             {/* Delete Listing Modal */}
-            <div className="tw-absolute">Delete listing</div>
+            {modalShowing && (
+                <div className="tw-modal-container">
+                    <DeleteListingModal
+                        closeModal={() => setModalShowing(false)}
+                    />
+                </div>
+            )}
         </div>
     );
 }

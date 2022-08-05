@@ -35,7 +35,7 @@ export default function FAQ({ showModal, FAQId, state, setFAQId }) {
                     </button>
                 </div>
             </CardHeader>
-            <CardBody className="tw-text-[21px] tw-leading-7 tw-pl-16 tw-pr-14 tw-text-black">
+            <CardBody className="tw-text-[21px] tw-leading-7 tw-pl-16 tw-pr-14 tw-pb-15 tw-text-black">
                 {FAQ?.description}
             </CardBody>
         </Card>

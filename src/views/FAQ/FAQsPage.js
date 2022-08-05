@@ -59,7 +59,7 @@ export default function FAQsRoutes() {
                             Add
                         </button>
                     </CardHeader>
-                    <CardBody className="tw-list-none tw-pt-0 tw-pl-9 tw-pr-14">
+                    <CardBody className="tw-list-none tw-pt-0 tw-pl-9 tw-pr-14 tw-pb-15">
                         {state.FAQs.length > 0 &&
                             state.FAQs.map((faq, index) => {
                                 return (

@@ -3,8 +3,11 @@
 @tailwind utilities;
 
 @layer components {
+    .tw-input-base {
+        @apply tw-px-5 tw-rounded tw-border-solid tw-border tw-border-gray-100 focus:tw-outline focus:tw-outline-purple-400 focus:tw-outline-1 tw-box-border;
+    }
     .tw-input {
-        @apply tw-px-6 tw-py-5 placeholder:tw-text-gray-200 placeholder:tw-font-semibold tw-text-base tw-rounded tw-border-solid tw-border tw-border-gray-100 focus:tw-outline focus:tw-outline-purple-400 focus:tw-outline-1 tw-box-border;
+        @apply tw-input-base tw-px-6 placeholder:tw-text-gray-200 placeholder:tw-font-semibold tw-text-base;
     }
     .tw-btn {
         @apply tw-rounded-full tw-border-none tw-font-bold tw-text-base tw-py-5 tw-max-h-[64px] tw-text-white tw-shadow-btn disabled:tw-bg-gray-100 disabled:tw-shadow-none disabled:tw-pointer-events-none tw-cursor-pointer;

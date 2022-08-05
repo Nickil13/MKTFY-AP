@@ -73,7 +73,7 @@ module.exports = {
                 15: "60px",
             },
             minHeight: {
-                ap: "calc(100vh - 153px)",
+                ap: "calc(100vh - 153px - 100px)",
             },
             width: {
                 input: "532px",
