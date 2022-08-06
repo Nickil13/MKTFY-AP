@@ -16,7 +16,7 @@
 
 */
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 // layouts
@@ -33,7 +33,10 @@ import RequireAuth from "utils/RequireAuth";
 import WithAxios from "utils/WithAxios";
 import { CustomToastContainer } from "components/CustomToast/CustomToastContainer";
 
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container);
+
+root.render(
     <UserContextProvider>
         <WithAxios>
             <BrowserRouter>
@@ -45,11 +48,9 @@ ReactDOM.render(
                             <Admin />
                         </RequireAuth>
                     </Route>
-
                     <Redirect from="/" to="/auth/login" />
                 </Switch>
             </BrowserRouter>
         </WithAxios>
-    </UserContextProvider>,
-    document.getElementById("root")
+    </UserContextProvider>
 );

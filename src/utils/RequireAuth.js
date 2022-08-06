@@ -9,7 +9,6 @@ export default function RequireAuth({ children }) {
     let location = useLocation();
 
     React.useEffect(() => {
-        console.log("Checking token lifetime");
         const token = sessionStorage.getItem("access_token");
         if (token) {
             try {
@@ -17,8 +16,6 @@ export default function RequireAuth({ children }) {
                 if (decoded.exp * 1000 < Date.now()) {
                     console.log("token expired");
                     logout();
-                } else {
-                    console.log("Token still active.");
                 }
             } catch (error) {
                 console.log(error);

@@ -8,7 +8,7 @@ import { dummyUsers } from "data/dummyUsers";
 import Pagination from "../../components/Pagination";
 
 export default function UserManagement() {
-    const [userId, setUserId] = useState("1");
+    const [userId, setUserId] = useState("");
     const [users, setUsers] = useState([]);
 
     useEffect(() => {

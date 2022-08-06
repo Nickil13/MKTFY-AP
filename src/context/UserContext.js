@@ -24,7 +24,6 @@ export const UserContextProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(
         sessionStorage.getItem("access_token")
     );
-    //const [editUserSuccess, setEditUserSuccess] = useState(false);
     const [error, setError] = useState("");
 
     const webAuth = new auth0js.WebAuth({
@@ -40,13 +39,19 @@ export const UserContextProvider = ({ children }) => {
         ).get("access_token");
 
         if (access_token) {
-            /* Set is Authenticated and store the access token in session storage */
-            sessionStorage.setItem("access_token", access_token);
-            setIsAuthenticated(true);
-            console.log("access token saved");
+            const decoded = jwt_decode(access_token);
+            // Check if the user is an Admin
+            const isAdmin = decoded["http://schemas.marketforyou.com/roles"];
+            if (isAdmin.length > 0 && isAdmin.includes("Admin")) {
+                /* Set is Authenticated and store the access token in session storage */
+                sessionStorage.setItem("access_token", access_token);
+                setIsAuthenticated(true);
 
-            /* Decode token to get user information */
-            getUserDetails();
+                /* Decode token to get user information */
+                getUserDetails();
+            } else {
+                setError("You must be an admin to login.");
+            }
         }
     }, []);
 
@@ -66,6 +71,7 @@ export const UserContextProvider = ({ children }) => {
         }
         return;
     };
+    /* Get user details for the current user */
     const getUserDetails = async () => {
         const userId = getIdFromToken();
 
@@ -86,12 +92,9 @@ export const UserContextProvider = ({ children }) => {
         try {
             const res = await axios.put("/User", body);
             setUser(res);
-            //setEditUserSuccess(true);
             toast.success("User info saved!");
         } catch (error) {
             toast.error("Error: did not save user info.");
-            // setError("Error editing user");
-            // console.log(error);
         }
     };
 
@@ -145,8 +148,6 @@ export const UserContextProvider = ({ children }) => {
                 user,
                 login,
                 logout,
-                // setEditUserSuccess,
-                // editUserSuccess,
                 isAuthenticated,
                 error,
                 setError,
