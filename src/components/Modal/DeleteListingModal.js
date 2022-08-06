@@ -4,6 +4,8 @@ import { dummyListing } from "data/dummyListing";
 import { ListingInput, Select } from "components/Input";
 import { ReactComponent as CloseIcon } from "assets/img/mktfy/orange_close-24.svg";
 import { CITY_OPTIONS } from "data/variables";
+import { CONDITIONS } from "data/variables";
+import { CATEGORY_TYPES } from "data/variables";
 
 export default function DeleteListingModal({ closeModal }) {
     const [productName, setProductName] = useState("Cat");
@@ -46,6 +48,7 @@ export default function DeleteListingModal({ closeModal }) {
                     name="product name"
                     value={productName}
                     setValue={setProductName}
+                    disabled
                 />
                 {/* Description */}
                 <div className="tw-flex tw-flex-col tw-mb-4">
@@ -59,45 +62,31 @@ export default function DeleteListingModal({ closeModal }) {
                         id="description"
                         name="description"
                         rows="5"
+                        disabled
                         className="tw-input-base tw-bg-[#F4F4F54D] tw-resize-none tw-py-5"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     ></textarea>
                 </div>
                 {/* Category select */}
-                <div className="tw-flex tw-flex-col tw-mb-4">
-                    <label
-                        className="tw-text-xs tw-text-[#313131] tw-mb-1.5"
-                        htmlFor="category"
-                    >
-                        Category
-                    </label>
-                    <input
-                        id="category"
-                        name="category"
-                        className="tw-input-base tw-bg-[#F4F4F54D] tw-h-[54px]"
-                        value={category}
-                        setValue={(e) => setCategory(e.target.value)}
-                    />
-                </div>
+                <Select
+                    name="category"
+                    value={category}
+                    setValue={setCategory}
+                    options={CATEGORY_TYPES}
+                    disabled
+                />
 
                 <div className="tw-grid tw-grid-cols-2 tw-gap-5">
                     {/* Condition select */}
-                    <div className="tw-flex tw-flex-col tw-mb-4">
-                        <label
-                            className="tw-text-xs tw-text-[#313131] tw-mb-1.5"
-                            htmlFor="condition"
-                        >
-                            Condition
-                        </label>
-                        <input
-                            id="condition"
-                            name="condition"
-                            className="tw-input-base tw-bg-[#F4F4F54D]  tw-h-[54px]"
-                            value={condition}
-                            setValue={(e) => setCondition(e.target.value)}
-                        />
-                    </div>
+                    <Select
+                        name="condition"
+                        value={condition}
+                        setValue={setCondition}
+                        options={CONDITIONS}
+                        disabled
+                    />
+
                     {/* Price */}
                     <div className="tw-flex tw-flex-col tw-mb-4">
                         <label
@@ -110,9 +99,10 @@ export default function DeleteListingModal({ closeModal }) {
                             id="price"
                             name="price"
                             type="text"
+                            disabled
                             className="tw-input-base tw-bg-[#F4F4F54D] tw-h-[54px]"
                             value={price}
-                            setValue={(e) => setPrice(e.target.value)}
+                            onChange={(e) => setPrice(e.target.value)}
                         />
                     </div>
                 </div>
@@ -122,6 +112,7 @@ export default function DeleteListingModal({ closeModal }) {
                     name="address"
                     value={address}
                     setValue={setAddress}
+                    disabled
                 />
                 {/* City select */}
                 <Select
@@ -129,12 +120,19 @@ export default function DeleteListingModal({ closeModal }) {
                     value={city}
                     setValue={setCity}
                     options={CITY_OPTIONS}
+                    disabled
                 />
                 <div className="tw-mt-9 tw-flex tw-gap-2.5">
-                    <button className="tw-btn tw-w-full tw-bg-transparent tw-shadow-none tw-text-[#969696] tw-border tw-border-solid tw-border-[#969696] tw-h-[50px] tw-py-0">
+                    <button
+                        type="button"
+                        className="tw-btn tw-w-full tw-bg-transparent tw-shadow-none tw-text-[#969696] tw-border tw-border-solid tw-border-[#969696] tw-h-[50px] tw-py-0"
+                    >
                         Cancel
                     </button>
-                    <button className="tw-btn-purple tw-w-full tw-h-[50px] tw-py-0">
+                    <button
+                        type="button"
+                        className="tw-btn-purple tw-w-full tw-h-[50px] tw-py-0"
+                    >
                         Delete
                     </button>
                 </div>

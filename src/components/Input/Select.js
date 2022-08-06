@@ -9,6 +9,7 @@ export default function Select({
     setValue,
     preselected,
     className,
+    disabled,
 }) {
     const [showOptions, setShowOptions] = useState(false);
     const select = useRef(null);
@@ -29,10 +30,12 @@ export default function Select({
     };
 
     const toggleOptions = () => {
-        setShowOptions(!showOptions);
+        if (!disabled) {
+            setShowOptions(!showOptions);
+        }
     };
     return (
-        <div className={`tw-relative ${className}`} ref={select}>
+        <div className={`tw-relative ${className} tw-mb-4`} ref={select}>
             <label htmlFor={name} className="tw-capitalize tw-text-[#313131]">
                 {name}
             </label>
@@ -42,7 +45,7 @@ export default function Select({
                     aria-haspopup="listbox"
                     aria-expanded={toggleOptions}
                     className={`tw-input-base tw-w-full
-                 tw-text-left tw-p-[16px] tw-border tw-rounded tw-bg-[#F4F4F54D] ${
+                 tw-text-left tw-p-[16px] tw-border tw-rounded tw-bg-[#F4F4F54D] tw-capitalize ${
                      showOptions
                          ? "tw-border-purple-200"
                          : "tw-border-transparent"
@@ -64,7 +67,7 @@ export default function Select({
             </div>
             {/* Select Options List */}
             <ul
-                className={`tw-absolute tw-bg-white tw-w-full tw-top-full tw-l-0 tw-r-0 tw-z-10 tw-shadow-dropdown tw-rounded-md tw-mt-1 tw-list-none tw-pl-0 ${
+                className={`tw-absolute tw-bg-white tw-w-full tw-top-full tw-l-0 tw-r-0 tw-z-10 tw-shadow-navbar tw-rounded-md tw-mt-1 tw-list-none tw-pl-0 ${
                     !showOptions && "tw-hidden"
                 }`}
             >
@@ -72,7 +75,7 @@ export default function Select({
                     options.map((option, index) => {
                         return (
                             <li
-                                className={`tw-p-5 tw-cursor-pointer tw-hover:bg-beige-200 tw-capitalize tw-text-base ${
+                                className={`tw-p-5 tw-cursor-pointer tw-hover:bg-beige-200 tw-capitalize tw-text-xs ${
                                     value === option && "tw-text-purple-100"
                                 }`}
                                 key={index}
@@ -99,4 +102,5 @@ Select.propTypes = {
     setValue: PropTypes.func,
     preselected: PropTypes.bool,
     className: PropTypes.string,
+    disabled: PropTypes.bool,
 };

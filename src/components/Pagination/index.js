@@ -4,7 +4,7 @@ import { ReactComponent as ChevronLeft } from "assets/img/mktfy/chevron-down.svg
 
 export default function Pagination() {
     return (
-        <div className="tw-inline-flex tw-items-center tw-border-gray-footer-border tw-border-solid tw-border-[0.5px] tw-rounded-[10px] tw-self-end tw-h-[48px] tw-mt-10">
+        <div className="tw-inline-flex tw-items-center tw-border-gray-footer-border tw-border-solid tw-border-[0.5px] tw-rounded-[10px] tw-self-end tw-h-[48px] tw-mt-5">
             <div className="tw-p-3">
                 <ChevronLeft className="tw-w-1.4 tw-h-3 tw-stroke-purple-100 tw-rotate-90 " />
             </div>

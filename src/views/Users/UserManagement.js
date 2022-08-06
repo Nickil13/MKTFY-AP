@@ -5,7 +5,7 @@ import CardHeader from "components/Card/CardHeader";
 import User from "./User";
 import Table from "components/Table/Table.js";
 import { dummyUsers } from "data/dummyUsers";
-import Pagination from "./Pagination";
+import Pagination from "../../components/Pagination";
 
 export default function UserManagement() {
     const [userId, setUserId] = useState("1");
@@ -24,13 +24,13 @@ export default function UserManagement() {
                 <Card className="tw-min-h-ap">
                     <CardHeader
                         icon
-                        className={`tw-flex tw-justify-between tw-bg-purple-500 tw-text-white tw-rounded-[10px] tw-px-6 tw-py-10 -tw-top-16  tw-shadow-card-header`}
+                        className={`tw-bg-purple-500 tw-text-white tw-rounded-[10px] tw-px-6 tw-py-10 -tw-top-16  tw-shadow-card-header`}
                     >
                         <h3 className="tw-font-semibold tw-text-xl tw-text-start tw-m-0">
                             Users
                         </h3>
                     </CardHeader>
-                    <CardBody className="tw-flex tw-flex-col tw-list-none tw-pt-0 tw-pl-9 tw-pr-14 tw-pb-10">
+                    <CardBody className="tw-flex tw-flex-col tw-list-none tw-pt-0 tw-pl-9 tw-pr-14 -tw-translate-y-10 tw-pb-0">
                         <Table
                             tableHeaderColor="mktfyPurple"
                             tableHead={[

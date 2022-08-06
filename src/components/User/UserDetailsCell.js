@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function DetailsCell({ icon, title, children }) {
+export default function UserDetailsCell({ icon, title, children }) {
     return (
         <div className="tw-p-6 tw-pb-[53px] tw-bg-white tw-rounded-[10px] tw-shadow-btn">
             <h4 className="tw-flex tw-items-center tw-mt-0 tw-text-purple-400 tw-font-semibold tw-text-[21px]">
@@ -19,7 +19,7 @@ export default function DetailsCell({ icon, title, children }) {
     );
 }
 
-DetailsCell.propTypes = {
+UserDetailsCell.propTypes = {
     icon: PropTypes.string,
     title: PropTypes.string,
     children: PropTypes.node,

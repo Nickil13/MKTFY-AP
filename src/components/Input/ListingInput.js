@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function ListingInput({ name, value, setValue }) {
+export default function ListingInput({ name, value, setValue, disabled }) {
     return (
         <div className="tw-flex tw-flex-col tw-mb-4">
             <label
@@ -14,6 +14,7 @@ export default function ListingInput({ name, value, setValue }) {
                 type="text"
                 id={name}
                 name={name}
+                disabled={disabled}
                 className="tw-input-base tw-bg-[#F4F4F54D] tw-h-[54px]"
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
@@ -26,4 +27,5 @@ ListingInput.propTypes = {
     name: PropTypes.string,
     value: PropTypes.string,
     setValue: PropTypes.func,
+    disabled: PropTypes.bool,
 };
