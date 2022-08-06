@@ -1,7 +1,7 @@
 import Logo from "components/Icons/Logo";
 import React from "react";
 import { useHistory, Route, Switch } from "react-router-dom";
-import { ForgotPassword, Login, ResetPassword, VerifyReset } from "views/Login";
+import { ForgotPassword, Login } from "views/Login";
 import { useUserContext } from "context/UserContext";
 
 export default function LoginLayout() {
@@ -25,11 +25,6 @@ export default function LoginLayout() {
                     <Route
                         path="/auth/forgot-password"
                         component={ForgotPassword}
-                    />
-                    <Route path="/auth/verify-reset" component={VerifyReset} />
-                    <Route
-                        path="/auth/reset-password"
-                        component={ResetPassword}
                     />
                 </Switch>
             </div>

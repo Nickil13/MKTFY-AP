@@ -23,6 +23,7 @@ export default function Login() {
             setEmailError("");
         }
     };
+
     return (
         <Wrapper>
             <h1 className="tw-text-purple-200 tw-text-center tw-font-bold tw-mb-8 tw-text-lg tw-mt-0">

@@ -2,14 +2,26 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { LoginInput } from "components/Input";
 import Wrapper from "./Wrapper";
+import { useUserContext } from "context/UserContext";
 
 export default function ForgotPassword() {
+    const { changePassword } = useUserContext();
     const [email, setEmail] = useState("");
+    const [emailError, setEmailError] = useState("");
     let history = useHistory();
+
+    const checkValidEmail = (value) => {
+        if (!value || value.match(/^[^\s@]+@[^\s@].[^\s@]+$/) == null) {
+            setEmailError("Your email is incorrect");
+        } else {
+            setEmailError("");
+        }
+    };
 
     const handleForgotPassword = (e) => {
         e.preventDefault();
-        history.push("/auth/verify-reset");
+        changePassword(email);
+        history.push("/auth/login");
     };
     return (
         <Wrapper goBack closeable>
@@ -31,6 +43,9 @@ export default function ForgotPassword() {
                         type="email"
                         value={email}
                         setValue={setEmail}
+                        onBlur={(e) => checkValidEmail(e.target.value)}
+                        invalid={emailError}
+                        errorMessage
                         lastchild
                     />
                     <button

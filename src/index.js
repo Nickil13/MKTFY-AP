@@ -30,21 +30,26 @@ import "assets/css/index.css";
 
 import { UserContextProvider } from "context/UserContext";
 import RequireAuth from "utils/RequireAuth";
+import WithAxios from "utils/WithAxios";
+import { CustomToastContainer } from "components/CustomToast/CustomToastContainer";
 
 ReactDOM.render(
     <UserContextProvider>
-        <BrowserRouter>
-            <Switch>
-                <Route path="/auth" component={LoginLayout} />
-                <Route path="/admin">
-                    <RequireAuth>
-                        <Admin />
-                    </RequireAuth>
-                </Route>
+        <WithAxios>
+            <BrowserRouter>
+                <CustomToastContainer />
+                <Switch>
+                    <Route path="/auth" component={LoginLayout} />
+                    <Route path="/admin">
+                        <RequireAuth>
+                            <Admin />
+                        </RequireAuth>
+                    </Route>
 
-                <Redirect from="/" to="/auth/login" />
-            </Switch>
-        </BrowserRouter>
+                    <Redirect from="/" to="/auth/login" />
+                </Switch>
+            </BrowserRouter>
+        </WithAxios>
     </UserContextProvider>,
     document.getElementById("root")
 );

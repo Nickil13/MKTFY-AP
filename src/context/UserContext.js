@@ -9,6 +9,7 @@ import {
     STORAGE_KEYS,
 } from "../utils/storageUtils";
 import PropTypes from "prop-types";
+import { toast } from "components/CustomToast/CustomToastContainer";
 
 const UserContext = React.createContext();
 
@@ -23,7 +24,7 @@ export const UserContextProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(
         sessionStorage.getItem("access_token")
     );
-    const [editUserSuccess, setEditUserSuccess] = useState(false);
+    //const [editUserSuccess, setEditUserSuccess] = useState(false);
     const [error, setError] = useState("");
 
     const webAuth = new auth0js.WebAuth({
@@ -79,16 +80,18 @@ export const UserContextProvider = ({ children }) => {
     const editUser = async (userDetails) => {
         const userId = getIdFromToken();
         const body = { ...userDetails, id: userId };
-        setEditUserSuccess(false);
-        setError("");
+        // setEditUserSuccess(false);
+        // setError("");
 
         try {
             const res = await axios.put("/User", body);
             setUser(res);
-            setEditUserSuccess(true);
+            //setEditUserSuccess(true);
+            toast.success("User info saved!");
         } catch (error) {
-            setError("Error editing user");
-            console.log(error);
+            toast.error("Error: did not save user info.");
+            // setError("Error editing user");
+            // console.log(error);
         }
     };
 
@@ -120,19 +123,36 @@ export const UserContextProvider = ({ children }) => {
         webAuth.logout({ returnTo: "http://localhost:3000/auth/login" });
     };
 
+    const changePassword = (email) => {
+        webAuth.changePassword(
+            {
+                connection: process.env.REACT_APP_REALM,
+                email,
+            },
+            function (err, resp) {
+                if (err) {
+                    toast.error(err.message);
+                } else {
+                    toast.success(resp);
+                }
+            }
+        );
+    };
+
     return (
         <UserContext.Provider
             value={{
                 user,
                 login,
                 logout,
-                setEditUserSuccess,
-                editUserSuccess,
+                // setEditUserSuccess,
+                // editUserSuccess,
                 isAuthenticated,
                 error,
                 setError,
                 getUserDetails,
                 editUser,
+                changePassword,
             }}
         >
             {children}
