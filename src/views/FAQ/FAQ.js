@@ -3,7 +3,7 @@ import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { ReactComponent as ChevronLeft } from "assets/img/mktfy/chevron-down.svg";
-import { modalTitles } from "variables/modalTitles";
+import { modalTitles } from "data/variables";
 import PropTypes from "prop-types";
 
 export default function FAQ({ showModal, FAQId, state, setFAQId }) {

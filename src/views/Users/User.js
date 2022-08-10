@@ -13,8 +13,9 @@ import droneImage from "assets/img/mktfy/dummyImages/drone.jpg";
 import bbImage from "assets/img/mktfy/dummyImages/bb8.jpg";
 import Toggle from "../../components/Toggle";
 import Pagination from "../../components/Pagination";
-import DeleteListingModal from "components/Modal/DeleteListingModal";
+import { ListingModal } from "components/Modal";
 import { UserListing } from "components/User";
+import ListingTab from "views/Listings/ListingTab";
 
 export default function User({ setUserId }) {
     const [showActiveListings, setShowActiveListings] = useState(true);
@@ -65,49 +66,41 @@ export default function User({ setUserId }) {
             </div>
             <div className="tw-flex tw-flex-col tw-bg-white tw-mt-6 tw-pt-8 tw-px-9 tw-pb-15 tw-shadow-[0px_1px_0px_#00000024] tw-rounded-[10px] tw-grow">
                 <div className="tw-mb-8">
-                    <button
-                        className={`${
-                            showActiveListings
-                                ? "tw-border-b-[5px] tw-border-b-purple-100 tw-text-purple-400 tw-pl-0 tw-pr-10"
-                                : "tw-text-gray-400 tw-border-none"
-                        }  tw-border-x-0 tw-border-t-0  tw-bg-transparent tw-font-semibold tw-text-[28px] tw-mr-16 tw-cursor-pointer`}
+                    <ListingTab
+                        active={showActiveListings}
                         onClick={() => setShowActiveListings(true)}
                     >
                         User Listings
-                    </button>
-                    <button
-                        className={`${
-                            !showActiveListings
-                                ? "tw-border-b-[5px] tw-border-b-purple-100 tw-text-purple-400 tw-pl-0 tw-pr-10"
-                                : "tw-text-gray-400 tw-border-none"
-                        }  tw-border-x-0 tw-border-t-0 tw-bg-transparent tw-font-semibold tw-text-[28px] tw-cursor-pointer`}
+                    </ListingTab>
+                    <ListingTab
+                        active={!showActiveListings}
                         onClick={() => setShowActiveListings(false)}
                     >
                         Purchased Listings
-                    </button>
+                    </ListingTab>
                 </div>
                 {showActiveListings ? (
                     <ul className="tw-flex tw-flex-col tw-list-none tw-pl-0 tw-gap-5">
                         <UserListing
-                            img={yellowFrogImage}
+                            images={[yellowFrogImage]}
                             showModal={() => setModalShowing(true)}
-                            active
+                            status="active"
                         />
                         <UserListing
-                            img={greenFrogImage}
+                            images={[greenFrogImage]}
                             showModal={() => setModalShowing(true)}
-                            active
+                            status="active"
                         />
                         <UserListing
-                            img={blueFrogImage}
+                            images={[blueFrogImage]}
                             showModal={() => setModalShowing(true)}
-                            active
+                            status="active"
                         />
                     </ul>
                 ) : (
                     <ul className="tw-flex tw-flex-col  tw-list-none tw-pl-0 tw-rounded-[10px] tw-gap-5">
-                        <UserListing img={droneImage} />
-                        <UserListing img={bbImage} />
+                        <UserListing images={[droneImage]} />
+                        <UserListing images={[bbImage]} />
                     </ul>
                 )}
                 <Pagination />
@@ -115,9 +108,7 @@ export default function User({ setUserId }) {
             {/* Delete Listing Modal */}
             {modalShowing && (
                 <div className="tw-modal-container">
-                    <DeleteListingModal
-                        closeModal={() => setModalShowing(false)}
-                    />
+                    <ListingModal closeModal={() => setModalShowing(false)} />
                 </div>
             )}
         </div>

@@ -7,7 +7,7 @@ import { CITY_OPTIONS } from "data/variables";
 import { CONDITIONS } from "data/variables";
 import { CATEGORY_TYPES } from "data/variables";
 
-export default function DeleteListingModal({ closeModal }) {
+export default function ListingModal({ closeModal, onConfirm, confirmText }) {
     const [productName, setProductName] = useState("Cat");
     const [description, setDescription] = useState(
         "A cat wrapped up in a beautiful scarf."
@@ -126,14 +126,16 @@ export default function DeleteListingModal({ closeModal }) {
                     <button
                         type="button"
                         className="tw-btn tw-w-full tw-bg-transparent tw-shadow-none tw-text-[#969696] tw-border tw-border-solid tw-border-[#969696] tw-h-[50px] tw-py-0"
+                        onClick={closeModal}
                     >
                         Cancel
                     </button>
                     <button
                         type="button"
                         className="tw-btn-purple tw-w-full tw-h-[50px] tw-py-0"
+                        onClick={onConfirm}
                     >
-                        Delete
+                        {confirmText}
                     </button>
                 </div>
             </form>
@@ -145,6 +147,12 @@ export default function DeleteListingModal({ closeModal }) {
     );
 }
 
-DeleteListingModal.propTypes = {
+ListingModal.propTypes = {
     closeModal: PropTypes.func,
+    onConfirm: PropTypes.func,
+    confirmText: PropTypes.string,
+};
+
+ListingModal.defaultProps = {
+    confirmText: "Delete",
 };

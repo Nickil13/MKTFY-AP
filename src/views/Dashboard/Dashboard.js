@@ -19,7 +19,7 @@ import usersIcon from "assets/img/mktfy/users.svg";
 import tagIcon from "assets/img/mktfy/tag.svg";
 import moneyIcon from "assets/img/mktfy/dollar-sign.svg";
 
-import { dailySalesChart } from "variables/charts.js";
+import { dailySalesChart } from "data/charts";
 
 import styles from "assets/jss/material-dashboard-react/views/dashboardStyle.js";
 import CustomDashboardCard from "components/Card/CustomDashboardCard";

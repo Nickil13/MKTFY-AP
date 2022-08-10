@@ -24,9 +24,9 @@ import Question from "assets/img/mktfy/help-circle.svg";
 
 // core components/views for Admin layout
 import DashboardPage from "views/Dashboard/Dashboard.js";
-import { FAQsPage } from "views/FAQ";
 import Listings from "views/Listings";
 import UserManagement from "views/Users/UserManagement";
+import { FAQsPage } from "views/FAQ";
 
 const dashboardRoutes = [
     {

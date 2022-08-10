@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { EditFAQModal, AddFAQModal } from "components/Modal";
-import { modalTitles } from "variables/modalTitles";
+import { modalTitles } from "data/variables";
 import FAQ from "./FAQ";
 import Card from "components/Card/Card.js";
 import CardHeader from "components/Card/CardHeader.js";
@@ -15,7 +15,7 @@ const initialState = {
     FAQs: [],
 };
 
-export default function FAQsRoutes() {
+export default function FAQsPage() {
     const [FAQId, setFAQId] = useState("");
     const [modalTitle, setModalTitle] = useState("");
     const [modalShowing, setModalShowing] = useState(false);
