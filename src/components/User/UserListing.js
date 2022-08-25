@@ -6,22 +6,19 @@ import { formatPrice } from "utils/helpers";
 import { modalTitles } from "data/variables";
 
 export default function UserListing({
-    images,
+    uploadUrls,
     prodName,
     price,
     condition,
     status,
     showModal,
     setModalTitle,
-    className,
 }) {
     return (
-        <li
-            className={`tw-flex tw-h-[214px] tw-rounded-[10px] tw-overflow-hidden tw-bg-[#F4F4F5] ${className}`}
-        >
+        <li className="tw-flex tw-h-[214px] tw-rounded-[10px] tw-overflow-hidden tw-bg-[#F4F4F5]">
             <img
                 className="tw-object-cover tw-h-full tw-w-[350px] tw-flex-shrink-0"
-                src={images[0]}
+                src={uploadUrls?.length > 0 ? uploadUrls[0] : []}
                 alt={prodName}
             />
             <div className="tw-flex tw-flex-col tw-items-start tw-px-15 tw-py-12">
@@ -73,18 +70,11 @@ export default function UserListing({
     );
 }
 UserListing.propTypes = {
-    images: PropTypes.arrayOf(PropTypes.string),
+    uploadUrls: PropTypes.arrayOf(PropTypes.string),
     prodName: PropTypes.string,
     price: PropTypes.number,
     condition: PropTypes.string,
     status: PropTypes.string,
     showModal: PropTypes.func,
     setModalTitle: PropTypes.func,
-    className: PropTypes.string,
-};
-
-UserListing.defaultProps = {
-    prodName: "Microsoft Frog One X 1 TB ClimberPro",
-    price: 340.0,
-    condition: "used",
 };

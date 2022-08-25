@@ -4,8 +4,8 @@ import CardBody from "components/Card/CardBody";
 import CardHeader from "components/Card/CardHeader";
 import User from "./User";
 import Table from "components/Table/Table.js";
-import { dummyUsers } from "data/dummyUsers";
 import Pagination from "../../components/Pagination";
+import axios from "utils/request";
 
 export default function UserManagement() {
     const [userId, setUserId] = useState("");
@@ -14,9 +14,23 @@ export default function UserManagement() {
     useEffect(() => {
         // Loading users
         if (users.length === 0) {
-            setUsers([...dummyUsers]);
+            getUsers().then((res) => {
+                console.log(res);
+                if (res) {
+                    setUsers(res);
+                }
+            });
         }
     }, []);
+
+    const getUsers = async () => {
+        try {
+            const res = await axios.get("/APUsers");
+            return res;
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <div className={`tw-min-h-ap ${!userId ? "tw-pt-8" : "tw-pt-0"}`}>
@@ -37,18 +51,18 @@ export default function UserManagement() {
                                 "Name",
                                 "Email",
                                 "Location",
-                                "Active Listing",
+                                "Active Listings",
                                 "Purchases",
                             ]}
                             tableData={users}
                             handleRowClick={setUserId}
                             className="tw-mt-0"
                         />
-                        <Pagination />
+                        <Pagination totalPages={users.length > 0 ? 2 : 0} />
                     </CardBody>
                 </Card>
             ) : (
-                <User setUserId={setUserId} />
+                <User setUserId={setUserId} id={userId} />
             )}
         </div>
     );

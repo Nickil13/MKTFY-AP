@@ -5,23 +5,72 @@ import BlockIcon from "assets/img/mktfy/slash.svg";
 import BagIcon from "assets/img/mktfy/shopping-bag.svg";
 import SalesIcon from "assets/img/mktfy/dollar-sign-purple.svg";
 import UserDetailsCell from "../../components/User/UserDetailsCell";
-import yellowFrogImage from "assets/img/mktfy/dummyImages/frog.jpg";
-import greenFrogImage from "assets/img/mktfy/dummyImages/frog2.jpg";
-import blueFrogImage from "assets/img/mktfy/dummyImages/frog3.jpg";
-
-import droneImage from "assets/img/mktfy/dummyImages/drone.jpg";
-import bbImage from "assets/img/mktfy/dummyImages/bb8.jpg";
 import Toggle from "../../components/Toggle";
 import Pagination from "../../components/Pagination";
 import { ListingModal } from "components/Modal";
 import { UserListing } from "components/User";
 import ListingTab from "views/Listings/ListingTab";
+import axios from "utils/request";
 
-export default function User({ setUserId }) {
+export default function User({ setUserId, id }) {
+    const [user, setUser] = useState(null);
+    const [activeListings, setActiveListings] = useState([]);
+    const [purchasedListings, setPurchasedListings] = useState([]);
     const [showActiveListings, setShowActiveListings] = useState(true);
     const [isBlocked, setIsBlocked] = useState(false);
     const [modalShowing, setModalShowing] = useState(false);
 
+    React.useEffect(() => {
+        if (!user || user.id !== id) {
+            getUserDetails().then((res) => {
+                if (res) {
+                    setUser(res);
+                }
+            });
+        }
+        if (activeListings.length === 0) {
+            getUserActiveListings().then((res) => {
+                if (res) {
+                    setActiveListings(res);
+                }
+            });
+        }
+
+        if (purchasedListings.length === 0) {
+            getUserPurchasedListings().then((res) => {
+                if (res) {
+                    setPurchasedListings(res);
+                }
+            });
+        }
+    }, []);
+
+    const getUserDetails = async () => {
+        try {
+            const res = axios.get(`/APUsers/${id}`);
+            return res;
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const getUserActiveListings = async () => {
+        try {
+            const res = axios.get(`/APUsers/${id}/active`);
+            return res;
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const getUserPurchasedListings = async () => {
+        try {
+            const res = axios.get(`/APUsers/${id}/purchased`);
+            return res;
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return (
         <div className="tw-flex tw-flex-col tw-min-h-ap">
             {/* Header */}
@@ -32,9 +81,9 @@ export default function User({ setUserId }) {
                         onClick={() => setUserId("")}
                     />
                     <h3 className="tw-font-semibold tw-text-xl tw-text-start tw-m-0 tw-mb-5 tw-pt-12">
-                        Terry Gomez
+                        {user?.fullName}
                     </h3>
-                    <span className="tw-text-[21px]">Calgary, AB</span>
+                    <span className="tw-text-[21px]">{`${user?.city}, AB`}</span>
                 </div>
                 {/* Details */}
                 <div className="tw-grid tw-grid-cols-3 tw-gap-4 tw-mt-2.5">
@@ -52,15 +101,17 @@ export default function User({ setUserId }) {
                     </UserDetailsCell>
                     <UserDetailsCell title="Total Purchases" icon={BagIcon}>
                         <span className="tw-font-semibold tw-text-[32px]">
-                            120
+                            {user?.numberOfPurchases}
                         </span>{" "}
-                        Bought Items
+                        {`Item${
+                            user?.numberOfPurchases !== 1 ? "s" : ""
+                        } Bought`}
                     </UserDetailsCell>
                     <UserDetailsCell title="Total Sales" icon={SalesIcon}>
                         <span className="tw-font-semibold tw-text-[32px]">
-                            120
+                            {user?.totalSales}
                         </span>{" "}
-                        Sale Items
+                        Profit
                     </UserDetailsCell>
                 </div>
             </div>
@@ -81,26 +132,35 @@ export default function User({ setUserId }) {
                 </div>
                 {showActiveListings ? (
                     <ul className="tw-flex tw-flex-col tw-list-none tw-pl-0 tw-gap-5">
-                        <UserListing
-                            images={[yellowFrogImage]}
-                            showModal={() => setModalShowing(true)}
-                            status="active"
-                        />
-                        <UserListing
-                            images={[greenFrogImage]}
-                            showModal={() => setModalShowing(true)}
-                            status="active"
-                        />
-                        <UserListing
-                            images={[blueFrogImage]}
-                            showModal={() => setModalShowing(true)}
-                            status="active"
-                        />
+                        {activeListings.length > 0 ? (
+                            activeListings.map((listing) => {
+                                return (
+                                    <UserListing
+                                        {...listing}
+                                        showModal={() => setModalShowing(true)}
+                                        status="active"
+                                        key={listing.id}
+                                    />
+                                );
+                            })
+                        ) : (
+                            <p>The user has not created any listings.</p>
+                        )}
                     </ul>
                 ) : (
                     <ul className="tw-flex tw-flex-col  tw-list-none tw-pl-0 tw-rounded-[10px] tw-gap-5">
-                        <UserListing images={[droneImage]} />
-                        <UserListing images={[bbImage]} />
+                        {purchasedListings.length > 0 ? (
+                            purchasedListings.map((listing) => {
+                                return (
+                                    <UserListing
+                                        {...listing}
+                                        key={listing.id}
+                                    />
+                                );
+                            })
+                        ) : (
+                            <p>The user has not made any purchases.</p>
+                        )}
                     </ul>
                 )}
                 <Pagination />
@@ -117,4 +177,5 @@ export default function User({ setUserId }) {
 
 User.propTypes = {
     setUserId: PropTypes.func,
+    id: PropTypes.string,
 };
