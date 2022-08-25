@@ -1,47 +1,56 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { dummyListing } from "data/dummyListing";
 import { ListingInput, Select } from "components/Input";
 import { ReactComponent as CloseIcon } from "assets/img/mktfy/orange_close-24.svg";
 import { CITY_OPTIONS } from "data/variables";
 import { CONDITIONS } from "data/variables";
 import { CATEGORY_TYPES } from "data/variables";
+import { formatPrice } from "utils/helpers";
 
-export default function ListingModal({ closeModal, onConfirm, confirmText }) {
-    const [productName, setProductName] = useState("Cat");
-    const [description, setDescription] = useState(
-        "A cat wrapped up in a beautiful scarf."
+export default function ListingModal({
+    listing,
+    closeModal,
+    onConfirm,
+    confirmText,
+}) {
+    const [productName, setProductName] = useState(listing?.prodName || "");
+    const [description, setDescription] = useState(listing?.description || "");
+    const [category, setCategory] = useState(listing?.category || "");
+    const [condition, setCondition] = useState(listing?.condition || "");
+    const [price, setPrice] = useState(
+        (listing?.price && formatPrice(listing.price)) || ""
     );
-    const [category, setCategory] = useState("electronics");
-    const [condition, setCondition] = useState("used");
-    const [price, setPrice] = useState("200.00");
-    const [address, setAddress] = useState("123 kitty kat lane");
-    const [city, setCity] = useState("Calgary");
+    const [address, setAddress] = useState(listing?.address || "");
+    const [city, setCity] = useState(listing?.city || "");
 
+    console.log(listing);
     return (
         <div className="tw-relative tw-flex tw-flex-col tw-bg-white tw-w-full tw-max-w-[690px] tw-rounded-[10px] tw-overflow-auto tw-max-h-[95vh]">
             {/* Main Image */}
             <img
                 className="tw-w-full tw-rounded-t tw-object-cover tw-max-h-[494px]"
-                src={dummyListing.images[0]}
+                src={
+                    listing?.uploadUrls?.length > 0 ? listing.uploadUrls[0] : []
+                }
                 alt="listing"
             />
             {/* Additional, smaller images */}
             <div className="tw-p-5 tw-flex tw-gap-5 tw-mb-1">
-                <div className="tw-h-[118px] tw-w-[118px] tw-rounded tw-overflow-hidden">
-                    <img
-                        className="tw-h-full tw-w-fulltw-object-cover"
-                        src={dummyListing.images[0]}
-                        alt="smaller listing"
-                    />
-                </div>
-                <div className="tw-h-[118px] tw-w-[118px] tw-rounded tw-overflow-hidden">
-                    <img
-                        className="tw-h-full tw-w-fulltw-object-cover"
-                        src={dummyListing.images[0]}
-                        alt="smaller listing"
-                    />
-                </div>
+                {listing?.uploadUrls?.length > 1 &&
+                    listing.uploadUrls.slice(1, 5).map((image, index) => {
+                        return (
+                            <div
+                                className="tw-h-[118px] tw-w-[118px] tw-rounded tw-overflow-hidden"
+                                key={index}
+                            >
+                                <img
+                                    className="tw-h-full tw-w-full tw-object-cover"
+                                    src={image}
+                                    alt="smaller listing"
+                                />
+                            </div>
+                        );
+                    })}
             </div>
             <form className="tw-p-5 tw-pb-6">
                 <ListingInput
@@ -151,6 +160,7 @@ ListingModal.propTypes = {
     closeModal: PropTypes.func,
     onConfirm: PropTypes.func,
     confirmText: PropTypes.string,
+    listing: PropTypes.object,
 };
 
 ListingModal.defaultProps = {

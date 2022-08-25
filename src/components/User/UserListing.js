@@ -11,7 +11,7 @@ export default function UserListing({
     price,
     condition,
     status,
-    showModal,
+    onClick,
     setModalTitle,
 }) {
     return (
@@ -40,7 +40,7 @@ export default function UserListing({
                     <button
                         className="tw-flex tw-flex-col tw-items-center tw-border-none tw-bg-transparent tw-text-green tw-text-[18px] tw-font-semibold tw-cursor-pointer tw-mr-9"
                         onClick={() => {
-                            showModal();
+                            onClick();
                             setModalTitle(modalTitles.CONFIRM_LISTING);
                         }}
                     >
@@ -58,8 +58,7 @@ export default function UserListing({
                         if (status === "pending") {
                             setModalTitle(modalTitles.CANCEL_LISTING);
                         }
-
-                        showModal();
+                        onClick();
                     }}
                 >
                     <CloseIcon className="tw-fill-red tw-mb-2.5" />
@@ -75,6 +74,6 @@ UserListing.propTypes = {
     price: PropTypes.number,
     condition: PropTypes.string,
     status: PropTypes.string,
-    showModal: PropTypes.func,
+    onClick: PropTypes.func,
     setModalTitle: PropTypes.func,
 };

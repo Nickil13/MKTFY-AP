@@ -15,7 +15,6 @@ export default function UserManagement() {
         // Loading users
         if (users.length === 0) {
             getUsers().then((res) => {
-                console.log(res);
                 if (res) {
                     setUsers(res);
                 }
@@ -62,7 +61,7 @@ export default function UserManagement() {
                     </CardBody>
                 </Card>
             ) : (
-                <User setUserId={setUserId} id={userId} />
+                <User setUserId={setUserId} userId={userId} />
             )}
         </div>
     );

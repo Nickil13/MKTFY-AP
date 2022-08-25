@@ -45,7 +45,7 @@ export default function Listings() {
                                         status="active"
                                         className="tw-bg-white tw-shadow-[0px_1px_0px_#00000024]"
                                         key={listing.id}
-                                        showModal={() => setModalShowing(true)}
+                                        onClick={() => setModalShowing(true)}
                                         setModalTitle={setModalTitle}
                                     />
                                 );
@@ -61,7 +61,7 @@ export default function Listings() {
                                         status="pending"
                                         className="tw-bg-white tw-shadow-[0px_1px_0px_#00000024]"
                                         key={listing.id}
-                                        showModal={() => setModalShowing(true)}
+                                        onClick={() => setModalShowing(true)}
                                         setModalTitle={setModalTitle}
                                     />
                                 );

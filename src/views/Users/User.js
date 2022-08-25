@@ -12,16 +12,17 @@ import { UserListing } from "components/User";
 import ListingTab from "views/Listings/ListingTab";
 import axios from "utils/request";
 
-export default function User({ setUserId, id }) {
+export default function User({ setUserId, userId }) {
     const [user, setUser] = useState(null);
     const [activeListings, setActiveListings] = useState([]);
     const [purchasedListings, setPurchasedListings] = useState([]);
     const [showActiveListings, setShowActiveListings] = useState(true);
     const [isBlocked, setIsBlocked] = useState(false);
     const [modalShowing, setModalShowing] = useState(false);
+    const [selectedListing, setSelectedListing] = useState(null);
 
     React.useEffect(() => {
-        if (!user || user.id !== id) {
+        if (!user || user.id !== userId) {
             getUserDetails().then((res) => {
                 if (res) {
                     setUser(res);
@@ -47,7 +48,7 @@ export default function User({ setUserId, id }) {
 
     const getUserDetails = async () => {
         try {
-            const res = axios.get(`/APUsers/${id}`);
+            const res = await axios.get(`/APUsers/${userId}`);
             return res;
         } catch (error) {
             console.error(error);
@@ -56,7 +57,7 @@ export default function User({ setUserId, id }) {
 
     const getUserActiveListings = async () => {
         try {
-            const res = axios.get(`/APUsers/${id}/active`);
+            const res = await axios.get(`/APUsers/${userId}/active`);
             return res;
         } catch (error) {
             console.error(error);
@@ -65,11 +66,39 @@ export default function User({ setUserId, id }) {
 
     const getUserPurchasedListings = async () => {
         try {
-            const res = axios.get(`/APUsers/${id}/purchased`);
+            const res = await axios.get(`/APUsers/${userId}/purchased`);
             return res;
         } catch (error) {
             console.error(error);
         }
+    };
+
+    const deleteUserListing = async (listingId) => {
+        try {
+            const res = await axios.delete(`/Listing/${listingId}`);
+            return res;
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const onListingClick = (listing) => {
+        setSelectedListing(listing);
+        setModalShowing(true);
+    };
+
+    const handleDeleteListing = (listing) => {
+        // delete listing in API
+        deleteUserListing(listing.id).then((res) => {
+            console.log(res);
+        });
+        // delete in state
+        const updatedListings = [...activeListings];
+        setActiveListings(
+            updatedListings.filter((newListing) => newListing.id !== listing.id)
+        );
+
+        setModalShowing(false);
     };
     return (
         <div className="tw-flex tw-flex-col tw-min-h-ap">
@@ -137,7 +166,7 @@ export default function User({ setUserId, id }) {
                                 return (
                                     <UserListing
                                         {...listing}
-                                        showModal={() => setModalShowing(true)}
+                                        onClick={() => onListingClick(listing)}
                                         status="active"
                                         key={listing.id}
                                     />
@@ -154,6 +183,7 @@ export default function User({ setUserId, id }) {
                                 return (
                                     <UserListing
                                         {...listing}
+                                        onClick={() => onListingClick(listing)}
                                         key={listing.id}
                                     />
                                 );
@@ -168,7 +198,11 @@ export default function User({ setUserId, id }) {
             {/* Delete Listing Modal */}
             {modalShowing && (
                 <div className="tw-modal-container">
-                    <ListingModal closeModal={() => setModalShowing(false)} />
+                    <ListingModal
+                        closeModal={() => setModalShowing(false)}
+                        listing={selectedListing}
+                        onConfirm={() => handleDeleteListing(selectedListing)}
+                    />
                 </div>
             )}
         </div>
@@ -177,5 +211,5 @@ export default function User({ setUserId, id }) {
 
 User.propTypes = {
     setUserId: PropTypes.func,
-    id: PropTypes.string,
+    userId: PropTypes.string,
 };
