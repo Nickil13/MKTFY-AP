@@ -4,23 +4,21 @@ import CardHeader from "components/Card/CardHeader.js";
 import CardBody from "components/Card/CardBody.js";
 import { ReactComponent as CloseIcon } from "assets/img/mktfy/icon_close.svg";
 import PropTypes from "prop-types";
-import { EDIT_FAQ, DELETE_FAQ } from "reducers/action-types";
-import { getFAQById, editFAQ, deleteFAQ } from "actions/faq";
+import { getFAQById } from "actions/faq";
 
 export default function EditFAQModal({
     closeModal,
-    FAQId,
+    currentFAQ,
     setFAQId,
-    state,
-    dispatch,
+    editFAQ,
+    deleteFAQ,
 }) {
-    const currentFAQ = state.FAQs?.find((faq) => faq.id === FAQId) || null;
     const [question, setQuestion] = useState(currentFAQ?.title || "");
     const [answer, setAnswer] = useState(currentFAQ?.description || "");
 
     useEffect(() => {
         if (!question) {
-            getFAQById(FAQId).then((res) => {
+            getFAQById(currentFAQ.id).then((res) => {
                 if (res) {
                     setQuestion(res.title);
                     setAnswer(res.description);
@@ -31,31 +29,12 @@ export default function EditFAQModal({
 
     const handleEditFAQ = (e) => {
         e.preventDefault();
-
-        editFAQ(FAQId, question, answer).then((res) => {
-            if (res) {
-                const updatedFAQs = state.FAQs.map((faq) => {
-                    if (faq.id === res.id) {
-                        return res;
-                    } else {
-                        return faq;
-                    }
-                });
-                dispatch({ type: EDIT_FAQ, payload: updatedFAQs });
-            }
-        });
+        editFAQ(currentFAQ.id, question, answer);
         closeModal();
     };
 
     const handleDeleteFAQ = () => {
-        deleteFAQ(FAQId).then((res) => {
-            if (res) {
-                const updatedFAQs = state.FAQs.filter(
-                    (faq) => faq.id !== FAQId
-                );
-                dispatch({ type: DELETE_FAQ, payload: updatedFAQs });
-            }
-        });
+        deleteFAQ(currentFAQ.id);
         closeModal();
         setFAQId("");
     };
@@ -135,8 +114,8 @@ export default function EditFAQModal({
 
 EditFAQModal.propTypes = {
     closeModal: PropTypes.func,
-    FAQId: PropTypes.string,
+    currentFAQ: PropTypes.object,
     setFAQId: PropTypes.func,
-    dispatch: PropTypes.func,
-    state: PropTypes.object,
+    editFAQ: PropTypes.func,
+    deleteFAQ: PropTypes.func,
 };

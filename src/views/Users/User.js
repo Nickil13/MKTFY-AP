@@ -10,7 +10,10 @@ import Pagination from "../../components/Pagination";
 import { ListingModal } from "components/Modal";
 import { UserListing } from "components/User";
 import ListingTab from "views/Listings/ListingTab";
-import axios from "utils/request";
+import { getUserDetails } from "actions/user";
+import { getUserActiveListings } from "actions/user";
+import { getUserPurchasedListings } from "actions/user";
+import { deleteUserListing } from "actions/user";
 
 export default function User({ setUserId, userId }) {
     const [user, setUser] = useState(null);
@@ -23,14 +26,14 @@ export default function User({ setUserId, userId }) {
 
     React.useEffect(() => {
         if (!user || user.id !== userId) {
-            getUserDetails().then((res) => {
+            getUserDetails(userId).then((res) => {
                 if (res) {
                     setUser(res);
                 }
             });
         }
         if (activeListings.length === 0) {
-            getUserActiveListings().then((res) => {
+            getUserActiveListings(userId).then((res) => {
                 if (res) {
                     setActiveListings(res);
                 }
@@ -38,49 +41,13 @@ export default function User({ setUserId, userId }) {
         }
 
         if (purchasedListings.length === 0) {
-            getUserPurchasedListings().then((res) => {
+            getUserPurchasedListings(userId).then((res) => {
                 if (res) {
                     setPurchasedListings(res);
                 }
             });
         }
     }, []);
-
-    const getUserDetails = async () => {
-        try {
-            const res = await axios.get(`/APUsers/${userId}`);
-            return res;
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    const getUserActiveListings = async () => {
-        try {
-            const res = await axios.get(`/APUsers/${userId}/active`);
-            return res;
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    const getUserPurchasedListings = async () => {
-        try {
-            const res = await axios.get(`/APUsers/${userId}/purchased`);
-            return res;
-        } catch (error) {
-            console.error(error);
-        }
-    };
-
-    const deleteUserListing = async (listingId) => {
-        try {
-            const res = await axios.delete(`/Listing/${listingId}`);
-            return res;
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
     const onListingClick = (listing) => {
         setSelectedListing(listing);

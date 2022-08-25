@@ -6,9 +6,7 @@ import { ReactComponent as ChevronLeft } from "assets/img/mktfy/chevron-down.svg
 import { modalTitles } from "data/variables";
 import PropTypes from "prop-types";
 
-export default function FAQ({ showModal, FAQId, state, setFAQId }) {
-    const FAQ = state.FAQs?.find((faq) => faq.id === FAQId) || null;
-
+export default function FAQ({ showModal, FAQ, setFAQId }) {
     const handleEditFAQ = () => {
         showModal(modalTitles.EDIT_FAQ);
     };
@@ -43,8 +41,7 @@ export default function FAQ({ showModal, FAQId, state, setFAQId }) {
 }
 
 FAQ.propTypes = {
-    FAQId: PropTypes.string,
     setFAQId: PropTypes.func,
     showModal: PropTypes.func,
-    state: PropTypes.object,
+    FAQ: PropTypes.object,
 };

@@ -8,28 +8,57 @@ import CardBody from "components/Card/CardBody.js";
 
 import FAQItem from "./FAQItem";
 import { getFAQs } from "actions/faq";
-import { FAQReducer } from "reducers/FAQReducer";
-import { LOAD_FAQS } from "reducers/action-types";
-
-const initialState = {
-    FAQs: [],
-};
+import { createFAQ, editFAQ, deleteFAQ } from "actions/faq";
 
 export default function FAQsPage() {
     const [FAQId, setFAQId] = useState("");
     const [modalTitle, setModalTitle] = useState("");
     const [modalShowing, setModalShowing] = useState(false);
-    const [state, dispatch] = React.useReducer(FAQReducer, initialState);
+    const [FAQs, setFAQs] = useState([]);
+    const currentFAQ = FAQs.find((faq) => faq.id === FAQId) || null;
 
     useEffect(() => {
-        if (state.FAQs.length === 0) {
+        if (FAQs.length === 0) {
             getFAQs().then((res) => {
                 if (res) {
-                    dispatch({ type: LOAD_FAQS, payload: res });
+                    setFAQs(res);
                 }
             });
         }
     }, []);
+
+    const handleAddFAQ = (title, description) => {
+        createFAQ(title, description).then((res) => {
+            if (res) {
+                const newFAQs = [{ title, description }, ...FAQs];
+                setFAQs(newFAQs);
+            }
+        });
+    };
+
+    const handleEditFAQ = (FAQId, question, answer) => {
+        editFAQ(FAQId, question, answer).then((res) => {
+            if (res) {
+                const updatedFAQs = FAQs.map((faq) => {
+                    if (faq.id === res.id) {
+                        return res;
+                    } else {
+                        return faq;
+                    }
+                });
+                setFAQs(updatedFAQs);
+            }
+        });
+    };
+
+    const handleDeleteFAQ = (FAQId) => {
+        deleteFAQ(FAQId).then((res) => {
+            if (res) {
+                const updatedFAQs = FAQs.filter((faq) => faq.id !== FAQId);
+                setFAQs(updatedFAQs);
+            }
+        });
+    };
 
     const showModal = (title) => {
         setModalShowing(true);
@@ -60,8 +89,8 @@ export default function FAQsPage() {
                         </button>
                     </CardHeader>
                     <CardBody className="tw-list-none tw-pt-0 tw-pl-9 tw-pr-14 tw-pb-15">
-                        {state.FAQs.length > 0 &&
-                            state.FAQs.map((faq, index) => {
+                        {FAQs.length > 0 &&
+                            FAQs.map((faq, index) => {
                                 return (
                                     <FAQItem
                                         key={index}
@@ -75,10 +104,8 @@ export default function FAQsPage() {
             ) : (
                 <FAQ
                     showModal={showModal}
-                    FAQId={FAQId}
                     setFAQId={setFAQId}
-                    state={state}
-                    dispatch={dispatch}
+                    FAQ={currentFAQ}
                 />
             )}
 
@@ -89,17 +116,17 @@ export default function FAQsPage() {
                         <AddFAQModal
                             closeModal={closeModal}
                             FAQId={FAQId}
-                            dispatch={dispatch}
+                            addFAQ={handleAddFAQ}
                         />
                     )}
                     {/* Edit Question Modal */}
                     {modalTitle === modalTitles.EDIT_FAQ && (
                         <EditFAQModal
                             closeModal={closeModal}
-                            FAQId={FAQId}
+                            currentFAQ={currentFAQ}
                             setFAQId={setFAQId}
-                            dispatch={dispatch}
-                            state={state}
+                            editFAQ={handleEditFAQ}
+                            deleteFAQ={handleDeleteFAQ}
                         />
                     )}
                 </div>

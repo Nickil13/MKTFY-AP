@@ -5,14 +5,13 @@ import CardHeader from "components/Card/CardHeader";
 import User from "./User";
 import Table from "components/Table/Table.js";
 import Pagination from "../../components/Pagination";
-import axios from "utils/request";
+import { getUsers } from "actions/user";
 
 export default function UserManagement() {
     const [userId, setUserId] = useState("");
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        // Loading users
         if (users.length === 0) {
             getUsers().then((res) => {
                 if (res) {
@@ -21,15 +20,6 @@ export default function UserManagement() {
             });
         }
     }, []);
-
-    const getUsers = async () => {
-        try {
-            const res = await axios.get("/APUsers");
-            return res;
-        } catch (error) {
-            console.error(error);
-        }
-    };
 
     return (
         <div className={`tw-min-h-ap ${!userId ? "tw-pt-8" : "tw-pt-0"}`}>
