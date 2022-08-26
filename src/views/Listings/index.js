@@ -1,22 +1,82 @@
 import React, { useState } from "react";
 import { UserListing } from "components/User";
-import { dummyListings } from "data/dummyListings";
 import Pagination from "components/Pagination";
 import { ListingModal } from "components/Modal";
 import { modalTitles } from "data/variables";
 import ListingTab from "./ListingTab";
+import { deleteUserListing } from "actions/user";
+import { getListings, confirmListing } from "actions/listings";
 
 export default function Listings() {
     const [showingActive, setShowingActive] = useState(true);
-    const [listings, setListings] = useState([]);
+    const [activeListings, setActiveListings] = useState([]);
+    const [pendingListings, setPendingListings] = useState([]);
+    const [selectedListing, setSelectedListing] = useState(null);
+
     const [modalShowing, setModalShowing] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
 
     React.useEffect(() => {
-        if (listings.length === 0) {
-            setListings(dummyListings);
+        if (pendingListings.length === 0 || activeListings.length === 0) {
+            getListings().then((res) => {
+                if (res) {
+                    const newActiveListings = res.filter(
+                        (listing) => listing.status === "Active"
+                    );
+                    const newPendingListings = res.filter(
+                        (listing) => listing.status === "Pending"
+                    );
+                    if (newActiveListings.length > 0) {
+                        setActiveListings(newActiveListings);
+                    }
+                    if (newPendingListings.length > 0) {
+                        setPendingListings(newPendingListings);
+                    }
+                }
+            });
         }
     }, []);
+
+    const onListingClick = (listing) => {
+        setSelectedListing(listing);
+        setModalShowing(true);
+    };
+
+    const handleDeleteListing = (listing) => {
+        deleteUserListing(listing.id).then(() => {
+            if (listing.status === "Active") {
+                const updatedListings = [...activeListings];
+                setActiveListings(
+                    updatedListings.filter(
+                        (newListing) => newListing.id !== listing.id
+                    )
+                );
+            }
+            if (listing.status === "Pending") {
+                const updatedListings = [...pendingListings];
+                setPendingListings(
+                    updatedListings.filter(
+                        (newListing) => newListing.id !== listing.id
+                    )
+                );
+            }
+            setModalShowing(false);
+        });
+    };
+
+    const handleConfirmListing = (listing) => {
+        confirmListing(listing.id).then((res) => {
+            if (res) {
+                const updatedListings = [...pendingListings];
+                setPendingListings(
+                    updatedListings.filter(
+                        (newListing) => newListing.id !== listing.id
+                    )
+                );
+                setModalShowing(false);
+            }
+        });
+    };
 
     return (
         <div>
@@ -37,15 +97,15 @@ export default function Listings() {
             <div className="tw-flex tw-flex-col">
                 {showingActive ? (
                     <ul className="tw-flex tw-flex-col tw-px-0 tw-mt-0 tw-gap-5">
-                        {listings.length > 0 &&
-                            listings.slice(0, 5).map((listing) => {
+                        {activeListings.length > 0 &&
+                            activeListings.map((listing) => {
                                 return (
                                     <UserListing
                                         {...listing}
                                         status="active"
                                         className="tw-bg-white tw-shadow-[0px_1px_0px_#00000024]"
                                         key={listing.id}
-                                        onClick={() => setModalShowing(true)}
+                                        onClick={() => onListingClick(listing)}
                                         setModalTitle={setModalTitle}
                                     />
                                 );
@@ -53,15 +113,15 @@ export default function Listings() {
                     </ul>
                 ) : (
                     <ul className="tw-flex tw-flex-col tw-px-0 tw-mt-0 tw-gap-5">
-                        {listings.length > 0 &&
-                            listings.slice(5, 10).map((listing) => {
+                        {pendingListings.length > 0 &&
+                            pendingListings.map((listing) => {
                                 return (
                                     <UserListing
                                         {...listing}
                                         status="pending"
                                         className="tw-bg-white tw-shadow-[0px_1px_0px_#00000024]"
                                         key={listing.id}
-                                        onClick={() => setModalShowing(true)}
+                                        onClick={() => onListingClick(listing)}
                                         setModalTitle={setModalTitle}
                                     />
                                 );
@@ -77,17 +137,17 @@ export default function Listings() {
                     showingActive ? (
                         <ListingModal
                             closeModal={() => setModalShowing(false)}
-                            onConfirm={() => {
-                                console.log("deleting listing");
-                                setModalShowing(false);
-                            }}
+                            listing={selectedListing}
+                            onConfirm={() =>
+                                handleDeleteListing(selectedListing)
+                            }
                         />
                     ) : (
                         <ListingModal
                             closeModal={() => setModalShowing(false)}
+                            listing={selectedListing}
                             onConfirm={() => {
-                                console.log("confirming listing");
-                                setModalShowing(false);
+                                handleConfirmListing(selectedListing);
                             }}
                             confirmText="Confirm sold"
                         />

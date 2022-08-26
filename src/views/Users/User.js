@@ -10,10 +10,12 @@ import Pagination from "../../components/Pagination";
 import { ListingModal } from "components/Modal";
 import { UserListing } from "components/User";
 import ListingTab from "views/Listings/ListingTab";
-import { getUserDetails } from "actions/user";
-import { getUserActiveListings } from "actions/user";
-import { getUserPurchasedListings } from "actions/user";
-import { deleteUserListing } from "actions/user";
+import {
+    getUserDetails,
+    getUserActiveListings,
+    getUserPurchasedListings,
+    deleteUserListing,
+} from "actions/user";
 
 export default function User({ setUserId, userId }) {
     const [user, setUser] = useState(null);
@@ -55,17 +57,16 @@ export default function User({ setUserId, userId }) {
     };
 
     const handleDeleteListing = (listing) => {
-        // delete listing in API
-        deleteUserListing(listing.id).then((res) => {
-            console.log(res);
-        });
-        // delete in state
-        const updatedListings = [...activeListings];
-        setActiveListings(
-            updatedListings.filter((newListing) => newListing.id !== listing.id)
-        );
+        deleteUserListing(listing.id).then(() => {
+            const updatedListings = [...activeListings];
+            setActiveListings(
+                updatedListings.filter(
+                    (newListing) => newListing.id !== listing.id
+                )
+            );
 
-        setModalShowing(false);
+            setModalShowing(false);
+        });
     };
     return (
         <div className="tw-flex tw-flex-col tw-min-h-ap">
