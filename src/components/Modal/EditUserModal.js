@@ -47,7 +47,7 @@ export default function EditUserModal({ closeModal }) {
                     onClick={closeModal}
                 />
             </CardHeader>
-            <CardBody className="tw-pl-[70px] tw-pr-[75px]">
+            <CardBody className="tw-pl-[70px] tw-pr-[75px] tw-overflow-y-auto">
                 <form
                     onSubmit={handleEditUser}
                     className="tw-flex tw-flex-col tw-h-full "

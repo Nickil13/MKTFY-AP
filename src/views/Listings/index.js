@@ -97,7 +97,7 @@ export default function Listings() {
             <div className="tw-flex tw-flex-col">
                 {showingActive ? (
                     <ul className="tw-flex tw-flex-col tw-px-0 tw-mt-0 tw-gap-5">
-                        {activeListings.length > 0 &&
+                        {activeListings.length > 0 ? (
                             activeListings.map((listing) => {
                                 return (
                                     <UserListing
@@ -109,11 +109,14 @@ export default function Listings() {
                                         setModalTitle={setModalTitle}
                                     />
                                 );
-                            })}
+                            })
+                        ) : (
+                            <p>No active listings found.</p>
+                        )}
                     </ul>
                 ) : (
                     <ul className="tw-flex tw-flex-col tw-px-0 tw-mt-0 tw-gap-5">
-                        {pendingListings.length > 0 &&
+                        {pendingListings.length > 0 ? (
                             pendingListings.map((listing) => {
                                 return (
                                     <UserListing
@@ -125,7 +128,10 @@ export default function Listings() {
                                         setModalTitle={setModalTitle}
                                     />
                                 );
-                            })}
+                            })
+                        ) : (
+                            <p>No pending listings found.</p>
+                        )}
                     </ul>
                 )}
                 <Pagination />

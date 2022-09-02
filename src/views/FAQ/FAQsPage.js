@@ -89,7 +89,7 @@ export default function FAQsPage() {
                         </button>
                     </CardHeader>
                     <CardBody className="tw-list-none tw-pt-0 tw-pl-9 tw-pr-14 tw-pb-15">
-                        {FAQs.length > 0 &&
+                        {FAQs.length > 0 ? (
                             FAQs.map((faq, index) => {
                                 return (
                                     <FAQItem
@@ -98,7 +98,10 @@ export default function FAQsPage() {
                                         setFAQId={setFAQId}
                                     />
                                 );
-                            })}
+                            })
+                        ) : (
+                            <p>No FAQs found.</p>
+                        )}
                     </CardBody>
                 </Card>
             ) : (

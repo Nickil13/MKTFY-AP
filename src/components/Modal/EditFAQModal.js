@@ -53,7 +53,7 @@ export default function EditFAQModal({
                     onClick={closeModal}
                 />
             </CardHeader>
-            <CardBody className="tw-pl-16 tw-pr-14">
+            <CardBody className="tw-pl-16 tw-pr-14 tw-overflow-y-auto">
                 <form
                     onSubmit={handleEditFAQ}
                     className="tw-flex tw-flex-col tw-h-full "
@@ -70,7 +70,7 @@ export default function EditFAQModal({
                             name="question"
                             id="question"
                             placeholder="Type question"
-                            className="tw-input tw-w-1/2 tw-border-solid tw-font-semibold"
+                            className="tw-input lg:tw-w-1/2 tw-border-solid tw-font-semibold"
                             value={question}
                             onChange={(e) => setQuestion(e.target.value)}
                         />
