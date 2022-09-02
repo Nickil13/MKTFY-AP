@@ -1,26 +1,29 @@
 const STORAGE_KEYS = {
     USER_KEY: "mktfy-user",
+    AUTH_TOKEN: "mktfy-token",
 };
 
-const setLocalStorage = (key, value) => {
-    localStorage.setItem(key, JSON.stringify(value));
+const setSessionStorage = (key, value) => {
+    sessionStorage.setItem(key, JSON.stringify(value));
 };
 
-const getLocalStorage = (key, initialValue) => {
+const getSessionStorage = (key, initialValue) => {
     try {
-        const value = localStorage.getItem(key);
+        const value = sessionStorage.getItem(key);
         return JSON.parse(value);
     } catch (error) {
         return initialValue;
     }
 };
 
-/* Local Storage items to clear on logout 
--- iterate when we end up with a list of keys */
-const clearLocalStorage = () => {
-    // user info
-    localStorage.removeItem(STORAGE_KEYS.USER_KEY);
-    // other stored values
+const clearSessionStorage = () => {
+    sessionStorage.removeItem(STORAGE_KEYS.USER_KEY);
+    sessionStorage.removeItem(STORAGE_KEYS.AUTH_TOKEN);
 };
 
-export { STORAGE_KEYS, setLocalStorage, getLocalStorage, clearLocalStorage };
+export {
+    STORAGE_KEYS,
+    setSessionStorage,
+    getSessionStorage,
+    clearSessionStorage,
+};

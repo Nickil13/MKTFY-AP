@@ -57,15 +57,17 @@ export default function User({ setUserId, userId }) {
     };
 
     const handleDeleteListing = (listing) => {
-        deleteUserListing(listing.id).then(() => {
-            const updatedListings = [...activeListings];
-            setActiveListings(
-                updatedListings.filter(
-                    (newListing) => newListing.id !== listing.id
-                )
-            );
+        deleteUserListing(listing.id).then((res) => {
+            if (res === "") {
+                const updatedListings = [...activeListings];
+                setActiveListings(
+                    updatedListings.filter(
+                        (newListing) => newListing.id !== listing.id
+                    )
+                );
 
-            setModalShowing(false);
+                setModalShowing(false);
+            }
         });
     };
     return (
@@ -88,7 +90,7 @@ export default function User({ setUserId, userId }) {
                         title="Block/Unblock User"
                         icon={BlockIcon}
                     >
-                        <div className="tw-flex">
+                        <div className="tw-flex tw-flex-wrap">
                             <span className="tw-mr-6">Block</span>
                             <Toggle
                                 active={isBlocked}

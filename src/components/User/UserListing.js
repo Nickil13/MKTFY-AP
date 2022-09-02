@@ -15,7 +15,7 @@ export default function UserListing({
     setModalTitle,
 }) {
     return (
-        <li className="tw-flex tw-h-[214px] tw-rounded-[10px] tw-overflow-hidden tw-bg-[#F4F4F5]">
+        <li className="tw-flex tw-flex-wrap tw-h-[214px] tw-rounded-[10px] tw-overflow-hidden tw-bg-[#F4F4F5]">
             <img
                 className="tw-object-cover tw-h-full tw-w-[350px] tw-flex-shrink-0"
                 src={uploadUrls?.length > 0 ? uploadUrls[0] : []}

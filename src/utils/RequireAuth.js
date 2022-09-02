@@ -3,13 +3,14 @@ import { Redirect, useLocation } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 import jwtDecode from "jwt-decode";
 import PropTypes from "prop-types";
+import { getSessionStorage, STORAGE_KEYS } from "./storageUtils";
 
 export default function RequireAuth({ children }) {
-    const { isLoading, isAuthenticated, logout } = useUserContext();
+    const { isAuthenticated, logout } = useUserContext();
     let location = useLocation();
 
     React.useEffect(() => {
-        const token = sessionStorage.getItem("access_token");
+        const token = getSessionStorage(STORAGE_KEYS.AUTH_TOKEN, null);
         if (token) {
             try {
                 const decoded = jwtDecode(token);
@@ -24,9 +25,6 @@ export default function RequireAuth({ children }) {
         }
     }, [location]);
 
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
     if (!isAuthenticated) {
         return <Redirect to="/" state={{ from: location }} replace />;
     }

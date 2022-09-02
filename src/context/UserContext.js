@@ -3,9 +3,9 @@ import auth0js from "auth0-js";
 import axios from "../utils/request";
 import jwt_decode from "jwt-decode";
 import {
-    clearLocalStorage,
-    getLocalStorage,
-    setLocalStorage,
+    clearSessionStorage,
+    getSessionStorage,
+    setSessionStorage,
     STORAGE_KEYS,
 } from "../utils/storageUtils";
 import PropTypes from "prop-types";
@@ -19,13 +19,13 @@ export const useUserContext = () => {
 
 export const UserContextProvider = ({ children }) => {
     const [user, setUser] = useState(
-        getLocalStorage(STORAGE_KEYS.USER_KEY, null)
+        getSessionStorage(STORAGE_KEYS.USER_KEY, null)
     );
     const [isAuthenticated, setIsAuthenticated] = useState(
-        sessionStorage.getItem("access_token")
+        getSessionStorage(STORAGE_KEYS.AUTH_TOKEN, false)
     );
     const [error, setError] = useState("");
-
+    const [isLoading, setIsLoading] = useState(false);
     const webAuth = new auth0js.WebAuth({
         domain: process.env.REACT_APP_DOMAIN,
         clientID: process.env.REACT_APP_CLIENT_ID,
@@ -44,7 +44,7 @@ export const UserContextProvider = ({ children }) => {
             const isAdmin = decoded["http://schemas.marketforyou.com/roles"];
             if (isAdmin.length > 0 && isAdmin.includes("Admin")) {
                 /* Set is Authenticated and store the access token in session storage */
-                sessionStorage.setItem("access_token", access_token);
+                setSessionStorage(STORAGE_KEYS.AUTH_TOKEN, access_token);
                 setIsAuthenticated(true);
 
                 /* Decode token to get user information */
@@ -55,16 +55,16 @@ export const UserContextProvider = ({ children }) => {
         }
     }, []);
 
-    /* Store changes made to user in local storage */
+    /* Store changes made to user in session storage */
     useEffect(() => {
         if (user) {
-            setLocalStorage(STORAGE_KEYS.USER_KEY, { ...user });
+            setSessionStorage(STORAGE_KEYS.USER_KEY, { ...user });
         }
     }, [user]);
 
     /* User API Functionality */
     const getIdFromToken = () => {
-        const token = sessionStorage.getItem("access_token");
+        const token = getSessionStorage(STORAGE_KEYS.AUTH_TOKEN, null);
         if (token) {
             const decoded = jwt_decode(token);
             return decoded.sub;
@@ -74,28 +74,27 @@ export const UserContextProvider = ({ children }) => {
     /* Get user details for the current user */
     const getUserDetails = async () => {
         const userId = getIdFromToken();
-
-        try {
-            const res = await axios.get(`/User/${userId}`);
+        const res = await axios.get(`/User/${userId}`);
+        if (res) {
             setUser(res);
-        } catch (error) {
-            console.log(error);
         }
     };
 
     const editUser = async (userDetails) => {
         const userId = getIdFromToken();
         const body = { ...userDetails, id: userId };
-        // setEditUserSuccess(false);
-        // setError("");
 
-        try {
-            const res = await axios.put("/User", body);
+        const res = await axios.put("/User", body);
+        if (res) {
             setUser(res);
             toast.success("User info saved!");
-        } catch (error) {
-            toast.error("Error: did not save user info.");
         }
+        // try {
+        //     const res = await axios.put("/User", body);
+
+        // } catch (error) {
+        //     toast.error("Error: did not save user info.");
+        // }
     };
 
     /* Auth0 Functionality */
@@ -121,8 +120,7 @@ export const UserContextProvider = ({ children }) => {
 
     const logout = () => {
         setIsAuthenticated(false);
-        sessionStorage.removeItem("access_token");
-        clearLocalStorage();
+        clearSessionStorage();
         webAuth.logout({ returnTo: "http://localhost:3000/auth/login" });
     };
 
@@ -154,6 +152,8 @@ export const UserContextProvider = ({ children }) => {
                 getUserDetails,
                 editUser,
                 changePassword,
+                isLoading,
+                setIsLoading,
             }}
         >
             {children}

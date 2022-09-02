@@ -1,51 +1,32 @@
 import axios from "utils/request";
 
 const getFAQs = async () => {
-    try {
-        const res = await axios.get("/FAQ");
-        return res;
-    } catch (error) {
-        console.log(error);
-    }
+    const res = await axios.get("/FAQ");
+    return res;
 };
 
 const getFAQById = async (id) => {
-    try {
-        const res = await axios.get(`/FAQ/${id}`);
-        return res;
-    } catch (error) {
-        console.log(error);
-    }
+    const res = await axios.get(`/FAQ/${id}`);
+    return res;
 };
 
 const createFAQ = async (title, description) => {
     const body = { title, description };
-    try {
-        const res = await axios.post("/FAQ", body);
-        return res;
-    } catch (error) {
-        console.log(error);
-    }
+
+    const res = await axios.post("/FAQ", body);
+    return res;
 };
 
 const editFAQ = async (id, title, description) => {
     const body = { id, title, description };
 
-    try {
-        const res = await axios.put("/FAQ", body);
-        return res;
-    } catch (error) {
-        console.log(error);
-    }
+    const res = await axios.put("/FAQ", body);
+    return res;
 };
 
 const deleteFAQ = async (id) => {
-    try {
-        await axios.delete(`/FAQ/${id}`);
-        return { success: true };
-    } catch (error) {
-        console.log(error);
-    }
+    await axios.delete(`/FAQ/${id}`);
+    return { success: true };
 };
 
 export { getFAQs, getFAQById, createFAQ, editFAQ, deleteFAQ };
