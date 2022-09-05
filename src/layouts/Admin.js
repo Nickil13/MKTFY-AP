@@ -38,6 +38,9 @@ const useStyles = makeStyles(styles);
 export default function Admin({ ...rest }) {
     const classes = useStyles();
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [editUserModalShowing, setEditUserModalShowing] = React.useState(
+        false
+    );
     const { isLoading } = useUserContext();
 
     const handleDrawerToggle = () => {
@@ -53,12 +56,16 @@ export default function Admin({ ...rest }) {
                 handleDrawerToggle={handleDrawerToggle}
                 open={mobileOpen}
                 color={"mktfyPurple"}
+                showModal={() => setEditUserModalShowing(true)}
                 {...rest}
             />
             <div className={classes.mainPanel}>
                 <Navbar
                     routes={routes}
                     handleDrawerToggle={handleDrawerToggle}
+                    modalShowing={editUserModalShowing}
+                    showModal={() => setEditUserModalShowing(true)}
+                    closeModal={() => setEditUserModalShowing(false)}
                     {...rest}
                 />
 

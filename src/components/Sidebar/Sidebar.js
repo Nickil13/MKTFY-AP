@@ -86,7 +86,12 @@ export default function Sidebar(props) {
                 >
                     {brand}
                     <div className={classes.sidebarWrapper}>
-                        <AdminNavbarLinks />
+                        <AdminNavbarLinks
+                            showModal={() => {
+                                props.showModal();
+                                props.handleDrawerToggle();
+                            }}
+                        />
 
                         {links}
                     </div>
@@ -136,4 +141,5 @@ Sidebar.propTypes = {
     image: PropTypes.string,
     routes: PropTypes.arrayOf(PropTypes.object),
     open: PropTypes.bool,
+    showModal: PropTypes.func,
 };

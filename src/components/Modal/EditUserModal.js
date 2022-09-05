@@ -52,8 +52,8 @@ export default function EditUserModal({ closeModal }) {
                     onSubmit={handleEditUser}
                     className="tw-flex tw-flex-col tw-h-full "
                 >
-                    <div className="tw-flex tw-justify-between">
-                        <div className="tw-flex tw-flex-col tw-mb-9">
+                    <div className="tw-grid lg:tw-grid-cols-2 tw-gap-9">
+                        <div className="tw-flex tw-flex-col tw-mb-9 tw-w-full tw-max-w-input">
                             <label
                                 htmlFor="firstName"
                                 className="tw-font-semibold tw-text-sm-16 tw-mb-3 tw-text-gray-400"
@@ -65,12 +65,12 @@ export default function EditUserModal({ closeModal }) {
                                 name="firstName"
                                 id="firstName"
                                 placeholder="Your first name"
-                                className="tw-input tw-w-input tw-border-solid tw-font-semibold"
+                                className="tw-input  tw-border-solid tw-font-semibold"
                                 value={firstName}
                                 onChange={(e) => setFirstName(e.target.value)}
                             />
                         </div>
-                        <div className="tw-flex tw-flex-col tw-mb-9">
+                        <div className="tw-flex tw-flex-col tw-mb-9 tw-w-full tw-max-w-input">
                             <label
                                 htmlFor="lastName"
                                 className="tw-font-semibold tw-text-sm-16 tw-mb-3 tw-text-gray-400"
@@ -82,7 +82,7 @@ export default function EditUserModal({ closeModal }) {
                                 name="lastName"
                                 id="lastName"
                                 placeholder="Your last name"
-                                className="tw-input tw-w-input tw-border-solid tw-font-semibold"
+                                className="tw-input tw-border-solid tw-font-semibold"
                                 value={lastName}
                                 onChange={(e) => setLastName(e.target.value)}
                             />
@@ -101,12 +101,12 @@ export default function EditUserModal({ closeModal }) {
                             name="email"
                             id="email"
                             placeholder="Your email"
-                            className="tw-input  tw-border-solid tw-font-semibold"
+                            className="tw-input tw-border-solid tw-font-semibold"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    <div className="tw-flex tw-space-between tw-pt-32">
+                    <div className="tw-flex tw-flex-wrap tw-space-y-2 tw-space-between tw-pt-28">
                         <button
                             type="button"
                             className="tw-btn tw-max-w-[472px] tw-mx-auto tw-w-full tw-bg-transparent tw-text-[#969696] tw-border tw-border-[#969696] tw-shadow-none tw-border-solid"

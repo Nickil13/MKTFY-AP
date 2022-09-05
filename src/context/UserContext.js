@@ -89,12 +89,6 @@ export const UserContextProvider = ({ children }) => {
             setUser(res);
             toast.success("User info saved!");
         }
-        // try {
-        //     const res = await axios.put("/User", body);
-
-        // } catch (error) {
-        //     toast.error("Error: did not save user info.");
-        // }
     };
 
     /* Auth0 Functionality */

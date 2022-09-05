@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 // @material-ui/core components
@@ -30,13 +30,6 @@ export default function Header(props) {
     const appBarClasses = classNames({
         [" " + classes[color]]: color,
     });
-    const [modalShowing, setModalShowing] = useState(false);
-    const showModal = () => {
-        setModalShowing(true);
-    };
-    const closeModal = () => {
-        setModalShowing(false);
-    };
 
     useEffect(() => {
         routeName = useRouteName();
@@ -64,7 +57,7 @@ export default function Header(props) {
                     </Button>
                 </div>
                 <Hidden smDown implementation="css">
-                    <AdminNavbarLinks showModal={showModal} />
+                    <AdminNavbarLinks showModal={props.showModal} />
                 </Hidden>
                 <Hidden mdUp implementation="css">
                     <IconButton
@@ -77,9 +70,9 @@ export default function Header(props) {
                 </Hidden>
             </Toolbar>
             {/* Edit User Nav Modal */}
-            {modalShowing && (
+            {props.modalShowing && (
                 <div className="tw-modal-container">
-                    <EditUserModal closeModal={closeModal} />
+                    <EditUserModal closeModal={props.closeModal} />
                 </div>
             )}
         </AppBar>
@@ -91,4 +84,7 @@ Header.propTypes = {
     rtlActive: PropTypes.bool,
     handleDrawerToggle: PropTypes.func,
     routes: PropTypes.arrayOf(PropTypes.object),
+    showModal: PropTypes.func,
+    closeModal: PropTypes.func,
+    modalShowing: PropTypes.bool,
 };

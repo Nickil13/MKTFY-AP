@@ -40,6 +40,11 @@ export default function AdminNavbarLinks({ showModal }) {
         setOpenProfile(null);
     };
 
+    const handleEditProfileClick = () => {
+        handleCloseProfile();
+        showModal();
+    };
+
     const handleLogout = () => {
         handleCloseProfile();
         logout();
@@ -126,10 +131,7 @@ export default function AdminNavbarLinks({ showModal }) {
                                             MKTFY ADMIN
                                         </span>
                                         <MenuItem
-                                            onClick={() => {
-                                                handleCloseProfile();
-                                                showModal();
-                                            }}
+                                            onClick={handleEditProfileClick}
                                             className={
                                                 classes.dropdownItem +
                                                 " tw-text-base-lg tw-text-purple-400 tw-mb-8 tw-pl-9 tw-ml-0"
