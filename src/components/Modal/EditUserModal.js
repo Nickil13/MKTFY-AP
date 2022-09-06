@@ -106,7 +106,7 @@ export default function EditUserModal({ closeModal }) {
                             onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    <div className="tw-flex tw-flex-wrap tw-space-y-2 tw-space-between tw-pt-28">
+                    <div className="tw-flex tw-flex-wrap tw-space-y-2 lg:tw-space-y-0 tw-space-between tw-pt-28">
                         <button
                             type="button"
                             className="tw-btn tw-max-w-[472px] tw-mx-auto tw-w-full tw-bg-transparent tw-text-[#969696] tw-border tw-border-[#969696] tw-shadow-none tw-border-solid"

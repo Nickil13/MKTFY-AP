@@ -9,7 +9,7 @@ export default function Wrapper({ goBack, children, closeable }) {
 
     return (
         <div
-            className={`tw-relative tw-flex tw-flex-col tw-bg-white tw-my-auto tw-rounded-[10px] tw-shadow-modal tw-w-full tw-max-w-modal tw-py-15`}
+            className={`tw-relative tw-flex tw-flex-col tw-bg-white tw-my-auto tw-rounded-[10px] tw-shadow-modal tw-w-4/5 tw-max-w-modal tw-py-15 tw-max-h-[80%] tw-overflow-y-auto tw-px-5 tw-box-border tw-hide-scrollbar`}
         >
             {children}
             {closeable && (

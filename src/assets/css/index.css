@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    .tw-hide-scrollbar {
+        -ms-osverflow-style: none;
+        scrollbar-width: none;
+    }
+    .tw-hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Change Autocomplete styles in Chrome*/
+    :-webkit-autofill,
+    :-webkit-autofill:hover,
+    :-webkit-autofill:focus {
+        transition: background-color 5000s ease-in-out 0s;
+    }
+}
 @layer components {
     .tw-input-base {
         @apply tw-px-5 tw-rounded tw-border-solid tw-border tw-border-gray-100 focus:tw-outline focus:tw-outline-purple-400 focus:tw-outline-1 tw-box-border;

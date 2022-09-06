@@ -29,7 +29,7 @@ export default function Login() {
                 Welcome Back!
             </h1>
             <form
-                className="tw-flex tw-flex-col tw-max-w-input tw-mx-auto"
+                className="tw-flex tw-flex-col tw-max-w-input tw-w-full tw-mx-auto"
                 onSubmit={handleLogin}
             >
                 <LoginInput

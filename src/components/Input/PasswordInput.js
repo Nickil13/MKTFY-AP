@@ -37,7 +37,7 @@ export default function PasswordInput({
             </label>
             <div className="tw-relative">
                 <input
-                    className="tw-input tw-box-border tw-w-input tw-max-w-input tw-text-gray-600 tw-font-[Verdana] placeholder:tw-font-mktfy tw-mb-1 tw-px-5"
+                    className="tw-input tw-box-border tw-w-full tw-max-w-input tw-text-gray-600 tw-font-[Verdana] placeholder:tw-font-mktfy tw-mb-1 tw-px-5"
                     type="password"
                     id={name}
                     name={name}

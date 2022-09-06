@@ -23,7 +23,6 @@ export default function ListingModal({
     const [address, setAddress] = useState(listing?.address || "");
     const [city, setCity] = useState(listing?.city || "");
 
-    console.log(listing);
     return (
         <div className="tw-relative tw-flex tw-flex-col tw-bg-white tw-w-full tw-max-w-[690px] tw-rounded-[10px] tw-overflow-auto tw-max-h-[95vh]">
             {/* Main Image */}
